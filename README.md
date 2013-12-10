@@ -1,5 +1,5 @@
-Neverpix: Saving Everpix one user at a time
-===========================================
+Neverpix: The Everpix Rescue Project
+====================================
 
 Neverpix is a re-implementation of the Everpix API and service
 that is designed to allow Everpix lovers to continue to use
