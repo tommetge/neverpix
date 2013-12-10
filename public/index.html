@@ -1,0 +1,3121 @@
+<!DOCTYPE html>
+<!-- © 2011-2013 33cube, Inc. All rights reserved. -->
+<!--[if lte IE 7 ]> <html lang="en" class="no-js oldie"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Everpix</title>
+  <meta name="description" content="Snap all the photos you want and spend more time enjoying them. Discover what you have and share what you love.">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" sizes="16x16" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/favicon_16.png">
+  <link rel="icon" sizes="196x196" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/android_196.png">
+  <link rel="icon" sizes="32x32" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/favicon_32.png">
+
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/ios_152.png">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/ios_120.png">
+
+  <meta name="msapplication-TileColor" content="#e57300">
+  <meta name="msapplication-TileImage" content="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/win8.png">
+
+  <meta property="og:image" content="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/facebook.png"/>
+
+  <!-- Libraries -->
+  <script src="assets/js/libs/jquery-1.9.1.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/libs/jquery-1.9.1.min.js"><\/script>')</script>
+  <script src="https://js.stripe.com/v1/" type="text/javascript"></script>
+  <script src="assets/js/libs/libs.min.js"></script>
+  <script src="assets/js/libs/plugins.min.js"></script>
+
+  <script src="assets/js/global.js"></script>
+
+  <script src="assets/js/app.js"></script>
+
+  <link rel="stylesheet" href="assets/css/common.css">
+
+  <link rel="stylesheet" href="assets/css/page.index.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div id="topBar">
+    <div id="fixedBars">
+      <div id="navBar">
+        <div class="navBar-anchor" id="navBar-left">
+          <div class="navBar-controls" id="navBar-left/selection">
+            <div class="navBar-controls-content">
+              <button class="button navBar-selection-cancel">Cancel</button>
+              <button class="button navBar-selection-add">Add Photos</button>
+            </div>
+          </div>
+          <div class="navBar-controls" id="navBar-left/review">
+            <div class="navBar-controls-content">
+              <button class="button dark navBar-review-cancel">Cancel</button>
+            </div>
+          </div>
+
+          <div class="navBar-controls" id="navBar-left/default">
+            <div class="navBar-controls-content">
+              <a class="navBar-button withText navBar-views" href="#panel=nav" data-new-count="0">
+                <span class="navBar-views-title"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="navBar-controls hideLobby" id="navBar-left/context">
+            <div class="navBar-controls-content">
+              <button class="navBar-button navBar-lobby" title="Back to Start">Back to Start</button>
+              <span class="navBar-vRule"></span>
+              <button class="navBar-button navBar-previous" title="Previous View">Previous View</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="navBar-anchor" id="navBar-right">
+          <div class="navBar-controls" id="navBar-right/selection">
+            <div class="navBar-controls-content">
+              <button class="button orange navBar-selection-done">Next</button>
+
+              <h5 class="navBar-selection-status">
+                <span class="navBar-selection-status-count">0</span>
+                <span class="navBar-selection-status-specifier">photos</span>
+                selected
+              </h5>
+            </div>
+          </div>
+
+          <div class="navBar-controls" id="navBar-right/review">
+            <div class="navBar-controls-content">
+              <button class="button orange navBar-review-done">Continue</button>
+            </div>
+          </div>
+
+          <div class="navBar-controls" id="navBar-right/share">
+            <div class="navBar-controls-content">
+              <button class="navBar-button navBar-share disabled" title="Share">Share</button>
+              <button class="navBar-button navBar-slideshow disabled hidden" title="Start Slideshow">Start Slideshow</button>
+            </div>
+          </div>
+
+          <div class="navBar-controls" id="navBar-right/default">
+            <div class="navBar-controls-content">
+              <a href="#panel=bonus" class="navBar-upgrade">Free Upgrade</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="navBar-anchor" id="navBar-center">
+          <div class="navBar-controls" id="navBar-center/context">
+            <div class="navBar-controls-content">
+              <h2 class="navBar-title"></h2>
+            </div>
+          </div>
+
+          <div class="navBar-controls" id="navBar-center/flashback">
+            <div class="navBar-controls-content">
+              <a class="button toggle left" href="#view=flashback/today" title="Today" data-state="today">Today</a>
+              <a class="button toggle right" href="#view=flashback/explore" title="Explore" data-state="explore">Explore</a>
+            </div>
+          </div>
+
+          <div class="navBar-controls" id="navBar-center/year">
+            <div class="navBar-controls-content">
+              <a class="navBar-button disabled yearNav-prev" title="Previous">Previous</a>
+              <a class="navBar-button disabled yearNav-next" title="Next">Next</a>
+              <span class="yearNav-selector"></span>
+            </div>
+          </div>
+
+          <div class="navBar-controls" id="navBar-center/default">
+            <div class="navBar-controls-content">
+              <h1 id="epLogo">Everpix</h1>
+            </div>
+          </div>
+        </div>
+
+        <ul id="yearsMenu" class="bubble bubbleMenu inverted">
+          <li class="bubbleMenu-group">
+            <div class="bubbleMenu-header">
+              <h4 class="bubbleMenu-title">Jump to Year:</h4>
+            </div>
+          </li>
+          <li class="bubbleMenu-group years-list"></li>
+        </ul>
+
+        <ul id="selectionMenu" class="bubble bubbleMenu inverted">
+          <li class="bubbleMenu-group">
+            <span class="bubbleMenu-button noIcon selectionMenu-all">Select All</span>
+          </li>
+          <li class="bubbleMenu-group">
+            <span class="bubbleMenu-button noIcon selectionMenu-none">Select None</span>
+          </li>
+        </ul>
+      </div>
+
+      <div id="extraBars"></div>
+      <div id="messageBars" class="messageBars-compact"></div>
+    </div>
+  </div>
+
+  <!-- Main content container -->
+  <div id="main"></div>
+
+  <!-- Panels and Popovers -->
+  <div id="blockingActivity" class="activity visible">
+    <div class="activity-indicator">
+      <span class="spinner"></span>
+      <span class="message"></span>
+    </div>
+  </div>
+
+  <div id="discreetActivity" class="activity">
+    <div class="activity-indicator">
+      <span class="spinner"></span>
+    </div>
+  </div>
+
+  <div id="nav">
+    <div id="navGuide">
+      <h3 class="navGuide-title"></h3>
+      <p class="navGuide-description"></p>
+      <span class="navGuide-dismiss">Hide guide</span>
+    </div>
+    <div id="navDrawer/default" class="navDrawer">
+      <div class="navDrawer-contents">
+        <div class="navDrawer-notifications"></div>
+        <ul class="navDrawer-views">
+          <li>
+            <a class="navDrawer-processing" href="#panel=preferences/stats" data-guide-key="processing">Processing&hellip;</a>
+            <a class="navDrawer-view-link" href="#view=home&amp;panel=close" data-viewtype="home" data-guide-key="home">Home</a>
+          </li>
+          <li>
+            <a class="navDrawer-view-link" href="#view=moments&amp;panel=close" data-viewtype="photos" data-guide-key="my-photos">My Photos</a>
+            <span class="navDrawer-filter-expand visible" data-viewtype="photos">Expand Filters</span>
+            <span class="navDrawer-filter-collapse" data-viewtype="photos">Collapse Filters</span>
+            <div class="navDrawer-filters" data-viewtype="photos">
+              <div class="navDrawer-filter-group">
+                <a class="navDrawer-filter-link" href="#view=moments&amp;panel=close" data-filtertype="all" data-guide-key="moments">All Photos</a>
+                <a class="navDrawer-filter-link" href="#view=highlights&amp;panel=close" data-filtertype="highlights" data-guide-key="highlights">Highlights</a>
+              </div>
+              <div class="navDrawer-filter-group navDrawer-filter-sources" data-baseView="sources"></div>
+            </div>
+          </li>
+          <li>
+            <a class="navDrawer-view-link" href="#view=flashback&amp;panel=close" data-viewtype="flashback" data-guide-key="flashback">Flashback</a>
+          </li>
+          <li>
+            <a class="navDrawer-view-link" href="#view=photomails&amp;panel=close" data-viewtype="photomails" data-guide-key="photomails" data-new-count="0">Photo Mail</a>
+          </li>
+        </ul>
+        <div class="navDrawer-settings">
+          <ul class="navDrawer-settings-links">
+            <li><a class="navDrawer-settings-link" href="#panel=preferences" data-function="preferences" data-guide-key="preferences">Preferences</a></li>
+            <li><a class="navDrawer-settings-link" href="#panel=connections" data-function="connections" data-guide-key="connections">Connections &amp; Apps</a></li>
+            <li><a class="navDrawer-settings-link" href="#panel=photopages" data-function="photoPages" data-guide-key="photopages">Photo Pages</a></li>
+          </ul>
+          <div class="navDrawer-footer">
+            <a class="navDrawer-footer-link" href="support.html">Help</a>
+            &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
+            <a class="navDrawer-footer-link" target="_blank" href="http://www.twitter.com/everpix">Twitter</a>
+            &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
+            <a class="navDrawer-footer-link" target="_blank" href="http://blog.everpix.com">Blog</a>
+            &nbsp;&nbsp;&#8226;&nbsp;&nbsp;
+            <span class="navDrawer-footer-link" data-function="signOut">Sign Out</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="navDrawer/alt" class="navDrawer">
+      <div class="navDrawer-contents">
+        <ul class="navDrawer-views">
+          <li>
+            <a class="navDrawer-view-link" href="#view=orphans&amp;panel=close" data-viewtype="orphans">Orphan Photos</a>
+            <span class="navDrawer-filter-expand visible" data-viewtype="orphans">Expand Filters</span>
+            <span class="navDrawer-filter-collapse" data-viewtype="orphans">Collapse Filters</span>
+            <div class="navDrawer-filters" data-viewtype="orphans">
+              <div class="navDrawer-filter-group">
+                <a class="navDrawer-filter-link" href="#view=orphans/all&amp;panel=close" data-filtertype="all">All Photos</a>
+              </div>
+              <div class="navDrawer-filter-group navDrawer-filter-sources" data-baseView="orphans"></div>
+            </div>
+          </li>
+          <li><a class="navDrawer-view-link" href="#view=latest&amp;panel=close" data-viewtype="latest">Most Recent</a></li>
+          <li><a class="navDrawer-view-link" href="#view=recently-modified&amp;panel=close" data-viewtype="recently-modified">Latest Modified</a></li>
+          <li><a class="navDrawer-view-link" href="#view=undated&amp;panel=close" data-viewtype="undated">Undated</a></li>
+          <li><a class="navDrawer-view-link" href="#view=sentmails&amp;panel=close" data-viewtype="sentmails">Sent Photo Mails</a></li>
+          <li><a class="navDrawer-view-link" href="#view=photopages&amp;panel=close" data-viewtype="photopages">Photo Pages</a></li>
+          <li><a class="navDrawer-view-link" href="#view=semantic&amp;panel=close" data-viewtype="semantic">Semantic</a></li>
+        </ul>
+        <div class="navDrawer-settings">
+          <ul class="navDrawer-settings-links">
+            <li><span class="navDrawer-settings-link" data-function="back">Default Panel</span></li>
+            <li><a class="navDrawer-settings-link" href="#panel=upload" data-function="upload">Upload Photos</a></li>
+            <li><span class="navDrawer-settings-link" data-function="today">Today's Date</span></li>
+            <li><span class="navDrawer-settings-link" data-function="party">Party Mode</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="photoViewer" data-features="{{featuresString}}">
+    <div class="photoViewer-photos">
+      <button class="photoViewer-prev">Previous</button>
+      <button class="photoViewer-next">Next</button>
+
+      <div id="photoViewer-activity" class="activity">
+        <span class="spinner"></span>
+      </div>
+
+      <div class="photoHolder"></div>
+
+      <div class="photoViewer-actionAlerts"></div>
+    </div>
+
+    <div class="photoViewer-infoPanel">
+      <button class="photoViewer-infoPanel-close photoViewer-button" title="Close Information Panel">Close Information Panel</button>
+
+      <div class="photoViewer-infoPanel-content"></div>
+
+      <div class="photoViewer-infoPanel-controls">
+
+        <span class="photoViewer-infoPanel-controls-button photoViewer-infoPanel-hide visible">Hide</span>
+        <span class="photoViewer-infoPanel-controls-button photoViewer-infoPanel-unhide">Unhide</span>
+        <span class="photoViewer-infoPanel-controls-button photoViewer-infoPanel-rotateRight">Rotate</span>
+        <span class="photoViewer-infoPanel-controls-button photoViewer-infoPanel-more">More</span>
+
+        <ul class="bubble bubbleMenu photoViewer-miscMenu">
+          <li class="bubbleMenu-group photoViewer-miscMenu-rotateGroup">
+            <span class="photoViewer-miscMenu-rotateRight bubbleMenu-button" data-direction="right">Rotate Right</span>
+            <span class="photoViewer-miscMenu-rotateLeft bubbleMenu-button" data-direction="left">Rotate Left</span>
+          </li>
+          <li class="bubbleMenu-group photoViewer-miscMenu-editTimestampGroup">
+            <span class="photoViewer-miscMenu-editTimestamp bubbleMenu-button">Edit Date</span>
+          </li>
+          <li class="bubbleMenu-group photoViewer-miscMenu-downloadGroup">
+            <span class="photoViewer-miscMenu-download bubbleMenu-button">Download Photo</span>
+          </li>
+          <li class="bubbleMenu-group photoViewer-miscMenu-deleteGroup">
+            <span class="photoViewer-miscMenu-delete bubbleMenu-button">Delete Photo</span>
+          </li>
+        </ul>
+      </div>
+
+      <span class="spinner"></span>
+    </div>
+
+    <div class="photoViewer-topBars">
+      <div class="photoViewer-topBars-left">
+        <button class="photoViewer-close photoViewer-button" title="Close">Close</button>
+      </div>
+
+      <div class="photoViewer-topBars-right">
+        <button class="photoViewer-jumpToMoment photoViewer-button" title="Jump to Moment">Jump to Moment</button>
+        <span class="photoViewer-vRule"></span>
+        <button class="photoViewer-more photoViewer-button" title="More">More</button>
+        <button class="photoViewer-info photoViewer-button" title="Information">Information</button>
+        <button class="photoViewer-slideshow photoViewer-button" title="Start Slideshow">Start Slideshow</button>
+        <button class="photoViewer-share photoViewer-button" title="Share Photo">Share</button>
+
+        <ul class="bubble bubbleMenu photoViewer-miscMenu inverted">
+          <li class="bubbleMenu-group photoViewer-miscMenu-hideGroup">
+            <span class="photoViewer-miscMenu-hide bubbleMenu-button visible">Hide Photo</span>
+            <span class="photoViewer-miscMenu-unhide bubbleMenu-button">Unhide Photo</span>
+          </li>
+          <li class="bubbleMenu-group photoViewer-miscMenu-rotateGroup">
+            <span class="photoViewer-miscMenu-rotateRight bubbleMenu-button" data-direction="right">Rotate Right</span>
+            <span class="photoViewer-miscMenu-rotateLeft bubbleMenu-button" data-direction="left">Rotate Left</span>
+          </li>
+          <li class="bubbleMenu-group photoViewer-miscMenu-editTimestampGroup">
+            <span class="photoViewer-miscMenu-editTimestamp bubbleMenu-button">Edit Date</span>
+          </li>
+          <li class="bubbleMenu-group photoViewer-miscMenu-downloadGroup">
+            <span class="photoViewer-miscMenu-download bubbleMenu-button">Download Photo</span>
+          </li>
+          <li class="bubbleMenu-group photoViewer-miscMenu-deleteGroup">
+            <span class="photoViewer-miscMenu-delete bubbleMenu-button">Delete Photo</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="photoViewer-messageBars messageBars-compact"></div>
+    </div>
+  </div>
+
+  <div id="preferences" class="card">
+    <h2 class="card-title">Preferences</h2>
+    <div class="tabset">
+      <div class="tabset-content" id="preferences/general" data-tab-id="general" data-tab-title="General">
+        <div class="card-content">
+          <div class="settings-section">
+            <h5 class="settings-header">Photos:</h5>
+            <ul class="settings-content" id="preferences/general/photos">
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/general/photos/show-hidden">
+                <label for="preferences/general/photos/show-hidden">Reveal hidden photos and moments</label>
+              </li>
+            </ul>
+          </div>
+          <div class="settings-section">
+            <h5 class="settings-header">Navigation:</h5>
+            <ul class="settings-content" id="preferences/general/navigation">
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/general/navigation/guide">
+                <label for="preferences/general/navigation/guide">Show navigation guide</label>
+              </li>
+            </ul>
+          </div>
+          <div class="settings-section">
+            <h5 class="settings-header">Shortcuts:</h5>
+            <ul class="settings-content" id="preferences/general/shortcuts">
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/general/shortcuts/keyboard">
+                <label for="preferences/general/shortcuts/keyboard">Enable keyboard shortcuts</label>
+                <a class="settings-hint" href="#panel=keyboard">See all website keyboard shortcuts</a>
+              </li>
+            </ul>
+          </div>
+          <div class="settings-section">
+            <h5 class="settings-header">Experiments:</h5>
+            <ul class="settings-content" id="preferences/general/experiments">
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/general/experiments/webp">
+                <label for="preferences/general/experiments/webp">Enable WebP thumbnails</label>
+                <span class="settings-hint">
+                  WebP thumbnails are only supported in Chrome, Opera 12+, and Android 4+<br/>
+                  <a href='https://developers.google.com/speed/webp/' target='_blank'>What is WebP?</a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabset-content" id="preferences/account" data-tab-id="account" data-tab-title="Account">
+        <div class="card-content">
+          <div class="settings-section">
+            <h5 class="settings-header">Name:</h5>
+            <div class="settings-content">
+              <p id="preferences/account/fullname"></p>
+              <p class="settings-hint">This is the name that's displayed when you share photos via Photo Mail.</p>
+              <span class="preferences-launcher preferences-nameLauncher">Edit your name</span>
+            </div>
+          </div>
+          <div class="settings-section">
+            <h5 class="settings-header">Email:</h5>
+            <div class="settings-content">
+              <ul id="preferences/account/email"></ul>
+              <p class="settings-hint">You can add additional email addresses so that any Photo Mail sent to them will be forwarded to this Everpix account.</p>
+              <span class="preferences-launcher preferences-emailLauncher">Add new email</span>
+            </div>
+          </div>
+          <div class="settings-section">
+            <h5 class="settings-header">Password:</h5>
+            <div class="settings-content">
+              <p title="Alium silere quod voles, primus sile.">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</p>
+              <span class="preferences-launcher preferences-passwordLauncher">Change password</span>
+            </div>
+          </div>
+          <span class="preferences-launcher preferences-deleteLauncher">Delete my account</span>
+        </div>
+      </div>
+
+      <div class="tabset-content" id="preferences/email" data-tab-id="email" data-tab-title="Emails">
+        <div class="card-content">
+          <div class="settings-section">
+            <h5 class="settings-header">Email Me:</h5>
+            <ul class="settings-content">
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/email/system" data-list="system">
+                <label for="preferences/email/system">Updates about my account</label>
+              </li>
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/email/everpix-newsletter" data-list="everpix_newsletter">
+                <label for="preferences/email/everpix-newsletter">News about Everpix features</label>
+              </li>
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/email/promotions" data-list="promotions">
+                <label for="preferences/email/promotions">Promotions and surveys</label>
+              </li>
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/email/photo-mail-notifications" data-list="photo_mail_notifications">
+                <label for="preferences/email/photo-mail-notifications">When I receive a Photo Mail</label>
+              </li>
+              <li class="settings-item">
+                <input type="checkbox" id="preferences/email/flashback" data-list="flashback">
+                <label for="preferences/email/flashback">Flashbacks</label>
+              </li>
+            </ul>
+            <div class="settings-content">
+              <span class="settings-hint">Flashback finds and send you photos that you've taken on this day in history. You can add your friends to receive a copy of your Flashbacks.</span>
+              <ul id="preferences/email/flashback-emails"></ul>
+              <span class="preferences-launcher preferences-flashbackEmailLauncher">Forward my Flashbacks</span>
+              <span class="settings-hint">Subscribers only</span>
+            </div>
+          </div>
+
+          <!--<div class="settings-section">
+            <h5 class="settings-header">Flashback:</h5>
+            <div class="settings-content">
+              <ul class="tight">
+                <li class="settings-item">
+                  <label>
+                    <input type="radio" id="preferences/email/flashback/daily" name="preferences/email/flashback" value="daily">
+                    Daily
+                  </label>
+                </li>
+                <li class="settings-item">
+                  <label>
+                    <input type="radio" id="preferences/email/flashback/occasionally" name="preferences/email/flashback" value="occasionally">
+                    Occasionally (default)
+                  </label>
+                </li>
+                <li class="settings-item">
+                  <label>
+                    <input type="radio" id="preferences/email/flashback/never" name="preferences/email/flashback" value="never">
+                    Never
+                  </label>
+                </li>
+              </ul>
+              <p class="settings-item settings-hint">Flashback finds and sends you photos that you've taken on this day in history.</p>
+            </div>
+          </div>-->
+        </div>
+      </div>
+
+      <div class="tabset-content" id="preferences/stats" data-tab-id="stats" data-tab-title="Stats">
+        <div class="card-content stats-realTime">
+          <dl class="stats-list">
+            <dt>Live Status:</dt>
+            <dd data-stats-realTime="photos">
+              <span class="stats-realTime-status" data-state="processing">Processing <span class="stats-realTime-photoCount">some</span> photos&hellip;</span>
+              <span class="stats-realTime-status" data-state="deduplicating">Deduplicating photos&hellip;</span>
+              <span class="stats-realTime-status" data-state="done">Your collection is up-to-date</span>
+            </dd>
+
+            <dt>Sources:</dt>
+            <dd data-stats-realTime="albums">
+              <span class="stats-realTime-status" data-state="processing">Updating&hellip;</span>
+              <span class="stats-realTime-status" data-state="done">Up-to-date</span>
+            </dd>
+
+            <dt>Moments:</dt>
+            <dd data-stats-realTime="events">
+              <span class="stats-realTime-status" data-state="processing">Updating&hellip;</span>
+              <span class="stats-realTime-status" data-state="done">Up-to-date</span>
+            </dd>
+
+            <dt>Highlights:</dt>
+            <dd data-stats-realTime="highlights">
+              <span class="stats-realTime-status" data-state="processing">Computing&hellip;</span>
+              <span class="stats-realTime-status" data-state="done">Up-to-date</span>
+            </dd>
+
+            <dt>Explore:</dt>
+            <dd data-stats-realTime="explore">
+              <span class="stats-realTime-status" data-state="processing">Computing&hellip;</span>
+              <span class="stats-realTime-status" data-state="done">Up-to-date</span>
+            </dd>
+          </dl>
+
+          <div class="stats-disclaimer">
+            <p>The above information is updated <strong>live</strong></p>
+
+            <span class="stats-realTime-learnMore">
+              <span class="bubble">
+                When syncing to Everpix, each photo is processed and analyzed with our image analysis, before being added to your collection. Collection views are updated soon afterwards.
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="card-content stats-collection">
+          <dl class="stats-list">
+            <dt>Collection:</dt>
+            <dd>
+              <span data-stats-collection="accessiblePhotoCount">0</span> photos total
+              <span class="stats-list-fineprint">
+                including <span data-stats-collection="accessibleDuplicateCount">0</span>
+                <a href="http://help.everpix.com/web.html?page=duplicates" target="_blank">duplicate photos</a>
+              </span>
+            </dd>
+
+            <dt class="stats-collection-free">Everpix Free:</dt>
+            <dd class="stats-collection-free">
+              <span data-stats-collection="deferredPhotoCount">0</span> photos too old to be processed
+              <a class="stats-list-fineprint" href="#panel=preferences/billing">Upgrade to process all photos</a>
+            </dd>
+          </dl>
+
+          <dl class="stats-list">
+            <dt>Newest photo:</dt>
+            <dd><span data-stats-collection="newestPhotoTimestamp">N/A</span></dd>
+
+            <dt>Oldest photo:</dt>
+            <dd><span data-stats-collection="oldestPhotoTimestamp">N/A</span></dd>
+          </dl>
+
+          <dl class="stats-list">
+            <dt>Photo Pages:</dt>
+            <dd><span data-stats-collection="snapshotCount">0</span> created</dd>
+
+            <dt>Photo Mails:</dt>
+            <dd><span data-stats-collection="photoMailsSent">0</span> sent</dd>
+          </dl>
+
+          <div class="stats-disclaimer">
+            <p>The above stats are updated <strong>once a day</strong></p>
+            <p class="stats-disclaimer-small">Updated <span data-stats-collection="updated">&hellip; never</span></p>
+          </div>
+        </div>
+
+        <div class="card-fineprint">
+          Having trouble with syncing or missing photos? <a href="http://help.everpix.com/web.html?page=missing-photos" target="_blank">Get Help</a>
+        </div>
+      </div>
+
+      <div class="tabset-content" id="preferences/billing" data-tab-id="billing" data-tab-title="Billing"></div>
+
+      <!--<div class="tabset-content" id="preferences/invite" data-tab-id="invite" data-tab-title="Invite">
+        <div class="card-content bonus-rewards">
+          <div class="bonus-reward" data-reward="referred-user">
+            <h3><a class="preferences-inviteLauncher">Tell your friends about Everpix</a></h3>
+            <p>Friends who sign up from your invitation and sync photos with the Everpix app (Mac or PC) will get <strong>6 bonus months</strong> of photos.</p>
+            <a class="button preferences-inviteLauncher">Send an Invite</a>
+          </div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+
+  <div id="connections" class="card">
+    <h2 class="card-title">Connections &amp; Apps</h2>
+    <div class="tabset">
+      <div class="tabset-content" id="connections/apps" data-tab-id="apps" data-tab-title="Apps">
+        <div class="card-content">
+          <h3>Sync from your PC/Mac and mobile devices</h3>
+        </div>
+        <ul class="connections card-content card-scrollable">
+          <li class="connection app-connection" data-platform="mac">
+            <h4 class="connection-title">Mac</h4>
+            <p class="connection-subtitle">Requires OS X 10.6 or newer</p>
+            <div class="connection-controls">
+              <!--<a class="button white" href="#panel=mac-uploader">Download</a>-->
+              <button class="button white disabled">Download</button>
+            </div>
+          </li>
+          <li class="connection app-connection" data-platform="windows">
+            <h4 class="connection-title">Windows</h4>
+            <p class="connection-subtitle">Requires Windows XP or newer</p>
+            <div class="connection-controls">
+              <!--<a class="button white" href="#panel=windows-uploader">Download</a>-->
+              <button class="button white disabled">Download</button>
+            </div>
+          </li>
+          <li class="connection app-connection" data-platform="ios">
+            <h4 class="connection-title">iOS</h4>
+            <p class="connection-subtitle">iOS 5.1+, iPhone 3GS or iPad 1 and newer</p>
+            <div class="connection-controls">
+              <!--<a class="button white" href="#panel=ios-app">Get the App</a>-->
+              <button class="button white disabled">Get the App</button>
+            </div>
+          </li>
+          <li class="connection app-connection" data-platform="android">
+            <h4 class="connection-title">Android</h4>
+            <p class="connection-subtitle">Requires Android 2.2 or newer</p>
+            <div class="connection-controls">
+              <!--<a class="button white" href="#panel=android-uploader">Get the App</a>-->
+              <button class="button white disabled">Get the App</button>
+            </div>
+          </li>
+        </ul>
+
+        <div class="card-fineprint">
+          <a href="http://help.everpix.com/web.html?page=photo-requirements" target="_blank">What kind of photos</a> sync to Everpix?
+        </div>
+      </div>
+      <div class="tabset-content" id="connections/web" data-tab-id="web" data-tab-title="Web">
+        <div class="card-content">
+          <h3>Connect to share or sync photos</h3>
+        </div>
+        <ul class="connections card-content card-scrollable">
+          <li class="connection web-connection" data-service="facebook">
+            <h4 class="connection-title">Facebook</h4>
+            <p class="connection-subtitle web-connection-description">Albums and tagged photos of you</p>
+            <p class="connection-subtitle web-connection-sharingOnly">Sharing Only</p>
+            <p class="connection-subtitle web-connection-pending">Sync pending&hellip;</p>
+            <p class="connection-subtitle web-connection-lastSync" title="Click to request syncing"></p>
+            <p class="connection-subtitle web-connection-error">Error, click reconnect to sync</p>
+            <div class="connection-controls">
+              <button class="button white web-connection-connect disabled">Connect</button>
+              <button class="button white disabled spinning web-connection-connecting">Connecting&hellip;</button>
+              <button class="button green web-connection-connected">Connected</button>
+              <button class="button red web-connection-disconnect">Disconnect</button>
+              <button class="button light web-connection-reconnect disabled">Reconnect</button>
+            </div>
+          </li>
+          <li class="connection web-connection" data-service="twitter">
+            <h4 class="connection-title">Twitter</h4>
+            <p class="connection-subtitle web-connection-description web-connection-sharingOnly">Sharing Only</p>
+            <div class="connection-controls">
+              <button class="button white web-connection-connect disabled">Connect</button>
+              <button class="button white disabled spinning web-connection-connecting">Connecting&hellip;</button>
+              <button class="button green web-connection-connected">Connected</button>
+              <button class="button red web-connection-disconnect">Disconnect</button>
+              <button class="button light web-connection-reconnect disabled">Reconnect</button>
+            </div>
+          </li>
+          <li class="connection web-connection" data-service="instagram">
+            <h4 class="connection-title">Instagram</h4>
+            <p class="connection-subtitle web-connection-description">All photos</p>
+            <p class="connection-subtitle web-connection-pending">Sync pending&hellip;</p>
+            <p class="connection-subtitle web-connection-lastSync" title="Click to request syncing"></p>
+            <p class="connection-subtitle web-connection-error">Error, click reconnect to sync</p>
+            <div class="connection-controls">
+              <button class="button white web-connection-connect disabled">Connect</button>
+              <button class="button white disabled spinning web-connection-connecting">Connecting&hellip;</button>
+              <button class="button green web-connection-connected">Connected</button>
+              <button class="button red web-connection-disconnect">Disconnect</button>
+              <button class="button light web-connection-reconnect disabled">Reconnect</button>
+            </div>
+          </li>
+          <li class="connection web-connection" data-service="flickr">
+            <h4 class="connection-title">Flickr</h4>
+            <p class="connection-subtitle web-connection-description">Photos in sets</p>
+            <p class="connection-subtitle web-connection-pending">Sync pending&hellip;</p>
+            <p class="connection-subtitle web-connection-lastSync" title="Click to request syncing"></p>
+            <p class="connection-subtitle web-connection-error">Error, click reconnect to sync</p>
+            <div class="connection-controls">
+              <button class="button white web-connection-connect disabled">Connect</button>
+              <button class="button white disabled spinning web-connection-connecting">Connecting&hellip;</button>
+              <button class="button green web-connection-connected">Connected</button>
+              <button class="button red web-connection-disconnect">Disconnect</button>
+              <button class="button light web-connection-reconnect disabled">Reconnect</button>
+            </div>
+          </li>
+          <li class="connection web-connection" data-service="picasa">
+            <h4 class="connection-title">Picasa Web</h4>
+            <p class="connection-subtitle web-connection-description">Photo albums</p>
+            <p class="connection-subtitle web-connection-pending">Sync pending&hellip;</p>
+            <p class="connection-subtitle web-connection-lastSync" title="Click to request syncing"></p>
+            <p class="connection-subtitle web-connection-error">Error, click reconnect to sync</p>
+            <div class="connection-controls">
+              <button class="button white web-connection-connect disabled">Connect</button>
+              <button class="button white disabled spinning web-connection-connecting">Connecting&hellip;</button>
+              <button class="button green web-connection-connected">Connected</button>
+              <button class="button red web-connection-disconnect">Disconnect</button>
+              <button class="button light web-connection-reconnect disabled">Reconnect</button>
+            </div>
+          </li>
+          <li class="connection web-connection" data-service="gmail">
+            <h4 class="connection-title">Gmail</h4>
+            <p class="connection-subtitle web-connection-description">Photo attachments in your inbox</p>
+            <p class="connection-subtitle web-connection-pending">Sync pending&hellip;</p>
+            <p class="connection-subtitle web-connection-lastSync" title="Click to request syncing"></p>
+            <p class="connection-subtitle web-connection-error">Error, click reconnect to sync</p>
+            <div class="connection-controls">
+              <button class="button white web-connection-connect disabled">Connect</button>
+              <button class="button white disabled spinning web-connection-connecting">Connecting&hellip;</button>
+              <button class="button green web-connection-connected">Connected</button>
+              <button class="button red web-connection-disconnect">Disconnect</button>
+              <button class="button light web-connection-reconnect disabled">Reconnect</button>
+            </div>
+          </li>
+          <li class="connection web-connection" data-service="path">
+            <h4 class="connection-title">Path</h4>
+            <p class="connection-subtitle web-connection-description web-connection-sharingOnly">Sharing Only</p>
+            <div class="connection-controls">
+              <button class="button white web-connection-connect disabled">Connect</button>
+              <button class="button white disabled spinning web-connection-connecting">Connecting&hellip;</button>
+              <button class="button green web-connection-connected">Connected</button>
+              <button class="button red web-connection-disconnect">Disconnect</button>
+              <button class="button light web-connection-reconnect disabled">Reconnect</button>
+            </div>
+          </li>
+        </ul>
+
+        <div class="card-fineprint">
+          <a href="http://help.everpix.com/web.html?page=photo-requirements" target="_blank">What kind of photos</a> sync to Everpix?
+        </div>
+      </div>
+      <div class="tabset-content" id="connections/devices" data-tab-id="devices" data-tab-title="Devices">
+        <div class="card-content">
+          <h3>Connected Devices</h3>
+          <p>The following devices are connected to Everpix. Click Disconnect to remotely sign out a device:</p>
+        </div>
+        <div class="devices card-loadable">
+          <ul class="connections card-content card-scrollable"></ul>
+        </div>
+      </div>
+      <div class="tabset-content" id="connections/delete" data-tab-id="delete" data-tab-title="Delete">
+        <div class="card-content">
+          <h3>Delete Photos</h3>
+          <p>Your collection contains photos from the following sources:</p>
+        </div>
+        <div class="sources card-loadable">
+          <ul class="sources-list card-content card-scrollable"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bonus" class="card">
+    <h2 class="card-title">Bonus</h2>
+
+    <div class="bonus-rewards card-content card-scrollable">
+      <!--<div class="bonus-reward" data-reward="unlimited">
+        <h3><a href="#panel=preferences/billing">Upgrade</a></h3>
+        <p>Subscribe to Everpix and go unlimited</p>
+        <a class="bonus-reward-value" href="#panel=preferences/billing">
+          Unlimited Photos
+        </a>
+      </div>
+      <div class="bonus-reward secret" data-reward="daringfireball">
+        <h3>Fireballed</h3>
+        <p>Sign up through Daring Fireball</p>
+        <span class="bonus-reward-value">
+          <span class="bonus-reward-value-earned">12</span> Months
+        </span>
+      </div>
+      <div class="bonus-reward" data-reward="desktop-uploader">
+        <h3><a href="#panel=connections/apps">Hello Cloud</a></h3>
+        <p>Sync some photos from Mac or Windows</p>
+        <a class="bonus-reward-value" href="#panel=connections/apps">
+          <span class="bonus-reward-value-earned">6</span> Months
+        </a>
+      </div>
+      <div class="bonus-reward" data-reward="mobile-app">
+        <h3><a href="#panel=connections/apps">Pocketful</a></h3>
+        <p>Get the Everpix iOS or Android app</p>
+        <a class="bonus-reward-value" href="#panel=connections/apps">
+          <span class="bonus-reward-value-earned">6</span> Months
+        </a>
+      </div>
+      <div class="bonus-reward" data-reward="sharing">
+        <h3>Share the Love</h3>
+        <p>Share some photos through Photo Mail or a Photo Page</p>
+        <span class="bonus-reward-value">
+          <span class="bonus-reward-value-earned">3</span> Months
+        </span>
+      </div>
+      <div class="bonus-reward" data-reward="referred-user">
+        <h3><a class="bonus-inviteLauncher">Spread the Word</a></h3>
+        <p>Let your friends know about Everpix</p>
+        <a class="bonus-reward-value preferences-inviteLauncher">
+          <span class="bonus-reward-value-earned">6</span> Months
+        </a>
+        <span class="bonus-reward-hint">6 months per friend</span>
+      </div>-->
+      <div class="bonus-reward" data-reward="unlimited">
+        <h3>Upgrade</h3>
+        <p>Subscribe to Everpix and go unlimited</p>
+        <span class="bonus-reward-value">
+          Unlimited Photos
+        </span>
+      </div>
+      <div class="bonus-reward secret" data-reward="daringfireball">
+        <h3>Fireballed</h3>
+        <p>Sign up through Daring Fireball</p>
+        <span class="bonus-reward-value">
+          <span class="bonus-reward-value-earned">12</span> Months
+        </span>
+      </div>
+      <div class="bonus-reward" data-reward="desktop-uploader">
+        <h3>Hello Cloud</h3>
+        <p>Sync some photos from Mac or Windows</p>
+        <span class="bonus-reward-value">
+          <span class="bonus-reward-value-earned">6</span> Months
+        </span>
+      </div>
+      <div class="bonus-reward" data-reward="mobile-app">
+        <h3>Pocketful</h3>
+        <p>Get the Everpix iOS or Android app</p>
+        <span class="bonus-reward-value">
+          <span class="bonus-reward-value-earned">6</span> Months
+        </span>
+      </div>
+      <div class="bonus-reward" data-reward="sharing">
+        <h3>Share the Love</h3>
+        <p>Share some photos through Photo Mail or a Photo Page</p>
+        <span class="bonus-reward-value">
+          <span class="bonus-reward-value-earned">3</span> Months
+        </span>
+      </div>
+      <div class="bonus-reward" data-reward="referred-user">
+        <h3>Spread the Word</h3>
+        <p>Let your friends know about Everpix</p>
+        <span class="bonus-reward-value">
+          <span class="bonus-reward-value-earned">6</span> Months
+        </span>
+        <span class="bonus-reward-hint">6 months per friend</span>
+      </div>
+    </div>
+
+    <!--<div class="card-fineprint">
+      Bonus months may take up to a day to be applied to your account, and photos from newly-earned months may take some time to be processed and analyzed before they show up in your collection.
+    </div>-->
+  </div>
+
+  <div id="photopages" class="card">
+    <h2 class="card-title">Photo Pages</h2>
+    <div class="card-content">
+      <p>These are groups of photos that have been shared to photo pages and are accessible by public link.</p>
+    </div>
+    <div class="photoPages card-loadable">
+      <div class="card-loadable-contents">
+        <ul class="photoPages-list card-content card-scrollable"></ul>
+        <hr>
+        <div class="photoPages-count card-content"></div>
+      </div>
+
+      <div class="card-loadable-pending">
+        <span class="spinner"></span> Loading
+      </div>
+      <div class="card-loadable-empty">
+        No published photo pages yet.
+      </div>
+    </div>
+  </div>
+
+  <!--<div id="mac-uploader" class="card">
+    <div class="download-header">
+      <h2>Downloading Mac App&hellip;</h2>
+      <p>Your download should start automatically. If not, <a class="appDownload appDownload-mac">click here to restart your download</a>.</p>
+    </div>
+    <ol class="install-steps">
+      <li class="install-step" data-step="install">
+        <h3>Download &amp; install the app</h3>
+        <p>Open the .dmg file that you downloaded, then double-click on the Everpix app to install.</p>
+      </li>
+      <li class="install-step" data-step="sources">
+        <h3>Sign in &amp; choose sources to sync</h3>
+        <p>It may take a few hours for all of your photos to be processed and show up in Everpix.</p>
+      </li>
+      <li class="install-step" data-step="done">
+        <h3>You're all set!</h3>
+        <p>Everpix now lives in your menu bar. New and edited photos will be synced automatically.</p>
+      </li>
+    </ol>
+
+    <div class="download-spinner">
+      <span class="spinner"></span>
+      Checking status&hellip;
+    </div>
+  </div>-->
+
+  <!--<div id="windows-uploader" class="card">
+    <div class="download-header">
+      <h2>Downloading Windows App&hellip;</h2>
+      <p>Your download should start automatically. If not, <a class="appDownload appDownload-windows">click here to restart your download</a>.</p>
+    </div>
+    <div class="card-details">
+      <div class="card-details-body">
+        <p>If your download still doesn't work, check to see if you already have Everpix installed on your computer, or <a class="appDownload appDownload-windowsFull">click here</a> to download the full Everpix installer.</p>
+        <p>You can also <a href="support.html">contact our customer support team</a>.</p>
+      </div>
+    </div>
+    <ol class="install-steps">
+      <li class="install-step" data-step="install">
+        <h3>Download &amp; install the app</h3>
+        <p>When prompted by Windows, choose <strong>install</strong>. If this doesn't work, <a class="appDownload appDownload-windowsFull">download the full Everpix installer</a>.</p>
+      </li>
+      <li class="install-step" data-step="sources">
+        <h3>Sign in &amp; choose sources to sync</h3>
+        <p>It may take a few hours for all of your photos to be processed and show up in Everpix.</p>
+      </li>
+      <li class="install-step" data-step="done">
+        <h3>You're all set!</h3>
+        <p>Everpix now lives in your taskbar. New and edited photos will be synced automatically.</p>
+      </li>
+    </ol>
+
+    <div class="download-spinner">
+      <span class="spinner"></span>
+      Checking status&hellip;
+    </div>
+  </div>-->
+
+  <!--<div id="ios-app" class="card">
+    <div class="download-header">
+      <h2>Get the iOS App for your iPhone or iPad</h2>
+      <p>Open the app page on iTunes, or we can send you an email with the download links that you can access from your device.</p>
+      <div class="card-controls">
+        <button class="button orange iosApp-email">Email me the link</button>
+        <a class="button" href="http://itunes.apple.com/us/app/everpix/id480052550" target="_blank">iTunes App Store</a>
+      </div>
+    </div>
+    <ol class="install-steps">
+      <li class="install-step" data-step="install">
+        <h3>Install &amp; sign in</h3>
+        <p>Download the Everpix app from the iTunes App Store and sign in to get started.</p>
+      </li>
+      <li class="install-step" data-step="camera">
+        <h3>Sync your camera roll</h3>
+        <p>Liberate your iPhone and iPad camera roll and add those photos to your collection.</p>
+      </li>
+      <li class="install-step" data-step="done">
+        <h3>You're all set!</h3>
+        <p>Your photos will be automatically synced. The initial batch may take a while, so we'll let you know when it's ready.</p>
+      </li>
+    </ol>
+
+    <div class="download-spinner">
+      <span class="spinner"></span>
+      Checking status&hellip;
+    </div>
+  </div>-->
+
+  <!--<div id="android-uploader" class="card">
+    <div class="download-header">
+      <h2>Get the Android Uploader</h2>
+      <p>Open the app page on Google Play, or we can send you an email with the download links that you can access from your device.</p>
+      <div class="card-controls">
+        <button class="button orange androidUploader-email">Email me the link</button>
+        <a class="button" href="https://play.google.com/store/apps/details?id=com.everpix.android.uploader" target="_blank">Google Play</a>
+      </div>
+    </div>
+    <ol class="install-steps">
+      <li class="install-step" data-step="install">
+        <h3>Install &amp; sign in</h3>
+        <p>Download the Everpix app from Google Play and sign in to get started.</p>
+      </li>
+      <li class="install-step" data-step="camera">
+        <h3>Sync your camera</h3>
+        <p>Liberate your Android camera and add those photos to your collection.</p>
+      </li>
+      <li class="install-step" data-step="done">
+        <h3>You're all set!</h3>
+        <p>Your photos will be automatically synced. The initial batch may take a while, so we'll let you know when it's ready.</p>
+      </li>
+    </ol>
+
+    <div class="download-spinner">
+      <span class="spinner"></span>
+      Checking status&hellip;
+    </div>
+  </div>-->
+
+  <div id="keyboard" class="card">
+    <h2 class="card-title">Keyboard Shortcuts</h2>
+    <div class="keyboard-sections card-content card-scrollable">
+      <div class="keyboard-section">
+        <h3 class="keyboard-section-title"><span>View Navigation</span></h3>
+        <ul class="keyboard-shortcuts">
+          <li class="keyboard-shortcut half">
+            <span class="key">G</span>
+            <span class="key">H</span>
+            Go to Home
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">G</span>
+            <span class="key">P</span>
+            Go to My Photos
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">G</span>
+            <span class="key">F</span>
+            Go to Flashbacks
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">G</span>
+            <span class="key">S</span>
+            Go to Photo Mail
+          </li>
+          <li class="keyboard-shortcut">
+            <span class="key">N</span>
+            Open/close navigation drawer
+          </li>
+          <li class="keyboard-shortcut">
+            <span class="key">J</span>
+            Previous year/month (in year/month view)
+          </li>
+          <li class="keyboard-shortcut">
+            <span class="key">K</span>
+            Next year/month (in year/month view)
+          </li>
+        </ul>
+      </div>
+
+      <div class="keyboard-section">
+        <h3 class="keyboard-section-title"><span>Photo Viewer</span></h3>
+        <ul class="keyboard-shortcuts">
+          <li class="keyboard-shortcut half">
+            <span class="key">I</span>
+            Open/Close info panel
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">H</span>
+            Hide/Unhide current photo
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">R</span>
+            <span class="key">R</span>
+            Rotate right
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">R</span>
+            <span class="key">L</span>
+            Rotate left
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">J</span>
+            Previous photo
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">K</span>
+            Next photo
+          </li>
+          <li class="keyboard-shortcut">
+            <span class="key">space</span>
+            Play/Pause slideshow
+          </li>
+        </ul>
+      </div>
+
+      <div class="keyboard-section">
+        <h3 class="keyboard-section-title"><span>Sharing</span></h3>
+        <ul class="keyboard-shortcuts">
+          <li class="keyboard-shortcut half">
+            <span class="key">S</span>
+            <span class="key">M</span>
+            Share to Photo Mail
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">S</span>
+            <span class="key">P</span>
+            Share to Photo Page
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">S</span>
+            <span class="key">F</span>
+            Share to Facebook
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">S</span>
+            <span class="key">T</span>
+            Share to Twitter
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">S</span>
+            <span class="key">W</span>
+            Print to Walgreens
+          </li>
+        </ul>
+      </div>
+
+      <div class="keyboard-section">
+        <h3 class="keyboard-section-title"><span>Panels</span></h3>
+        <ul class="keyboard-shortcuts">
+          <li class="keyboard-shortcut half">
+            <span class="key">P</span>
+            <span class="key">P</span>
+            Open Preferences
+          </li>
+          <li class="keyboard-shortcut half">
+            <span class="key">P</span>
+            <span class="key">C</span>
+            Open Connections
+          </li>
+          <li class="keyboard-shortcut">
+            <span class="key">P</span>
+            <span class="key">O</span>
+            Open Photo Pages
+          </li>
+          <li class="keyboard-shortcut">
+            <span class="key">P</span>
+            <span class="key">K</span>
+            or
+            <span class="key">?</span>
+            Open Keyboard Shortcuts
+          </li>
+        </ul>
+      </div>
+  </div>
+
+  <div id="upload" class="card">
+    <h2 class="card-title">Upload Photos</h2>
+    <div class="upload-container card-loadable populated empty">
+      <div class="card-loadable-contents">
+        <ul class="upload-files card-content card-scrollable"></ul>
+      </div>
+      <div class="card-loadable-empty">
+        Drag photos here to upload them to your collection.
+      </div>
+    </div>
+  </div>
+
+  <!-- Mustache templates -->
+  <script id="template-loadingError" type="text/html">
+    <div id="loadingError" class="card">
+      <div class="card-content">
+        <h3>Oops! Something went wrong.</h3>
+        <p>Everpix is having some kind of problem loading your account. Refresh the page to try again.</p>
+        <p>If you continue to see this message, please contact <a href="mailto:support@everpix.com">support@everpix.com</a>.
+      </div>
+    </div>
+  </script>
+
+  <script id="template-billingError" type="text/html">
+    <div id="billingError" class="card">
+      <div class="card-content">
+        <h3>Oops! Something went wrong.</h3>
+        <p>Everpix is having some kind of problem processing your subscription. Refresh the page and try again.</p>
+        <p>If you continue to see this message, please contact <a href="mailto:support@everpix.com">support@everpix.com</a>.
+      </div>
+    </div>
+  </script>
+
+  <script id="template-tabset-tabs" type="text/html">
+    <ul class="tabset-tabs">
+      {{#tabs}}
+        <li class="tabset-tab" data-tab-id="{{id}}"><a class="tabset-tab-link" href="{{link}}">{{title}}</a></li>
+      {{/tabs}}
+    </ul>
+  </script>
+
+  <script id="template-messageBar" type="text/html">
+    <div class="messageBar{{#extraClasses}} {{extraClasses}}{{/extraClasses}}"{{#viewID}} data-view="{{viewID}}"{{/viewID}}>
+      <div class="messageBar-contents"></div>
+      {{#closeButton}}<span class="messageBar-closeButton">Close</span>{{/closeButton}}
+    </div>
+  </script>
+
+  <script id="template-notification" type="text/html">
+    <div class="notification">
+      {{#subject}}
+        <h4 class="notification-subject">
+          {{#link}}
+            <a href='{{link}}'{{^isLocal}} target='_blank'{{/isLocal}}>{{{subject}}}</a>
+          {{/link}}
+          {{^link}}
+            {{{subject}}}
+          {{/link}}
+        </h4>
+      {{/subject}}
+      <p class="notification-body">{{{body}}}</p>
+      <span class="notification-dismiss">Dismiss</span>
+    </div>
+  </script>
+
+  <script id="template-view" type="text/html">
+    <div class="view{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{id}}">
+      <div class="view-contents{{#hasFootnoteNavigation}} pushBottom{{/hasFootnoteNavigation}}">
+        {{#hasControls}}<div class="view-controls"></div>{{/hasControls}}
+        {{#hasGrids}}<div class="view-grids"></div>{{/hasGrids}}
+      </div>
+      {{#hasFootnoteNavigation}}
+        <div class="view-footnote-navigation">
+          <a class="view-footnote-prev hidden" href="#">Previous</a>
+          <a class="view-footnote-next hidden" href="#">Next</a>
+        </div>
+      {{/hasFootnoteNavigation}}
+    </div>
+  </script>
+
+  <script id="template-sheetView" type="text/html">
+    <div class="view{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{id}}"></div>
+  </script>
+
+  <script id="template-sheet" type="text/html">
+    <div class="view-sheet{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{viewID}}/{{id}}">
+      <div class="view-contents{{#hasFootnoteNavigation}} pushBottom{{/hasFootnoteNavigation}}">
+        {{#hasControls}}<div class="view-controls"></div>{{/hasControls}}
+        {{#hasGrids}}<div class="view-grids"></div>{{/hasGrids}}
+      </div>
+      {{#hasFootnoteNavigation}}
+        <div class="view-footnote-navigation">
+          <a class="view-footnote-prev hidden" href="#">Previous</a>
+          <a class="view-footnote-next hidden" href="#">Next</a>
+        </div>
+      {{/hasFootnoteNavigation}}
+    </div>
+  </script>
+
+  <script id="template-grid" type="text/html">
+    <div class="grid{{#extraClasses}} {{extraClasses}}{{/extraClasses}}{{#dimHiddenItems}} dimHiddenItems{{/dimHiddenItems}}{{#isDim}} dim{{/isDim}}">
+      {{#title}}<h3 class="grid-title">{{{title}}}</h3>{{/title}}
+      <div class="grid-contents"></div>
+    </div>
+  </script>
+
+  <script id="template-grid-coverMessage" type="text/html">
+    <div class="grid-coverMessage" {{#icon}}data-icon="{{icon}}"{{/icon}}>
+      <div class="grid-coverMessage-content">
+        <h4 class="grid-coverMessage-title">{{title}}</h4>
+        <p>{{body}}</p>
+        {{#dismissButton}}
+          <div class="grid-coverMessage-buttons">
+            <span class="button translucent">
+              {{#dismissButtonLabel}}{{dismissButtonLabel}}{{/dismissButtonLabel}}
+              {{^dismissButtonLabel}}Okay{{/dismissButtonLabel}}
+            </span>
+          </div>
+        {{/dismissButton}}
+      </div>
+    </div>
+  </script>
+
+  <script id="template-yearMenu-link" type="text/html">
+    <a class="bubbleMenu-button noIcon yearMenu-link" href="#view=year-{{year}}" data-year="{{year}}">{{year}}</a>
+  </script>
+
+  <script id="template-navDrawer-filter-link" type="text/html">
+    <a class="navDrawer-filter-link" href="#view={{baseView}}/{{source}}&amp;panel=close" data-filtertype="{{source}}" data-guide-key="{{source}}">{{title}}</a>
+  </script>
+
+  <script id="template-delete" type="text/html">
+    <form id="preferences/delete" class="card">
+      <div class="card-content">
+        <h3>Delete Account</h3>
+        <p>We're sorry to see you go! If you're having technical issues with Everpix, please first check out our extensive <a href="https://support.everpix.com/forums" target="_blank">knowledge base</a> or email us at <a href="mailto:support@everpix.com">support@everpix.com</a> and we'd be happy to help.</p>
+        <p>Account deletion is <strong>final</strong>, and all your photos and associated metadata stored on Everpix will be deleted. There is no way to recover your account.</p>
+      </div>
+      <hr/>
+      <fieldset class="card-content">
+          <div class="formSection">
+          <div class="formField half">
+            <label for="preferences/delete/password" class="formField-label">Password</label>
+            <input type="password" id="preferences/delete/password" data-validation-required>
+          </div>
+          <div class="formField half">
+            <label for="preferences/delete/confirm" class="formField-label">Type <strong>"Delete"</strong><span class="hideSmallScreen"> to confirm</span></label>
+            <input type="text" id="preferences/delete/confirm" data-validation-required data-validation-confirmdelete>
+          </div>
+          <div class="formField">
+            <label for="preferences/delete/reason" class="formField-label">Please let us know why you are deleting your account</label>
+            <textarea id="preferences/delete/reason"></textarea>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Delete My Account" id="preferences/delete/submit" class="button red" data-value-pending="Deleting&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-delete-recurringWarning" type="text/html">
+    <div id="preferences/delete/recurring-warning" class="card">
+      <div class="card-content">
+        <h3>Cannot delete account</h3>
+        <p>Your account cannot be deleted because you currently hold a recurring subscription to Everpix.</p>
+        {{#isApple}}
+          <p>Please go to iTunes and unsubscribe from Everpix before deleting your account.</p>
+        {{/isApple}}
+        {{^isApple}}
+          <p>Please go to the Billing tab and unsubscribe before deleting your account.</p>
+        {{/isApple}}
+        <div class="card-controls">
+          <button class="recurringWarning-close button">Okay</button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-preferences/account/name" type="text/html">
+    <form id="preferences/account/name" class="card">
+      <fieldset class="card-content">
+        <div class="formSection" data-icon="account">
+          <div class="formField half">
+            <label for="preferences/account/name/first" class="formField-label">First Name</label>
+            <input type="text" id="preferences/account/name/first" value="{{first}}" data-validation-required>
+          </div>
+          <div class="formField half">
+            <label for="preferences/account/name/last" class="formField-label">Last Name</label>
+            <input type="text" id="preferences/account/name/last" value="{{last}}" data-validation-required>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Save" id="preferences/account/name/submit" class="button" data-value-pending="Saving&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-preferences/account/addEmail" type="text/html">
+    <form id="preferences/account/addEmail" class="card" novalidate>
+      <fieldset class="card-content">
+        <h3>Add an email to your Everpix account</h3>
+        <p>You can add additional email addresses so that any Photo Mail sent to them will be imported to your Everpix account.</p>
+
+        <div class="formSection" data-icon="email">
+          <div class="formField">
+            <label for="preferences/account/addEmail/email" class="formField-label">Email</label>
+            <input type="email" id="preferences/account/addEmail/email" data-validation-required data-validation-email/>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Add" id="preferences/account/addEmail/submit" class="button" data-value-pending="Adding&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-preferences/account/password" type="text/html">
+    <form id="preferences/account/password" class="card">
+      <fieldset class="card-content">
+        <div class="formSection" data-icon="secure">
+          <div class="formField">
+            <label for="preferences/account/password/current" class="formField-label">Current Password</label>
+            <input type="password" id="preferences/account/password/current" data-validation-required>
+          </div>
+          <div class="formField half">
+            <label for="preferences/account/password/new" class="formField-label">New Password</label>
+            <input type="password" id="preferences/account/password/new" data-validation-required data-validation-minlength="6">
+          </div>
+          <div class="formField half">
+            <label for="preferences/account/password/verify" class="formField-label">Verify Password</label>
+            <input type="password" id="preferences/account/password/verify" data-validation-matches="preferences/account/password/new">
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Save" id="preferences/account/password/submit" class="button" data-value-pending="Saving&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-preferences/email/addFlashbackEmail" type="text/html">
+    <form id="preferences/email/addFlashbackEmail" class="card" novalidate>
+      <fieldset class="card-content">
+        <h3>Add an email to forward your Flashbacks</h3>
+        <p>You can add email addresses to receive a copy of your Flashbacks.</p>
+
+        <div class="formSection" data-icon="email">
+          <div class="formField">
+            <label for="preferences/email/addFlashbackEmail/email" class="formField-label">Email</label>
+            <input type="email" id="preferences/email/addFlashbackEmail/email" data-validation-required data-validation-email/>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Add" id="preferences/email/addFlashbackEmail/submit" class="button" data-value-pending="Adding&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-preferences-emailList-address" type="text/html">
+    <li class="emailList-address{{#isDefault}} default{{/isDefault}}{{#isPending}} pending{{/isPending}}" data-email="{{email}}">
+      {{^isDefault}}
+        <span class="emailList-address-controls">
+          <span class="emailList-address-setDefault">Set Default</span>
+          <span class="emailList-address-delete">Remove</span>
+        </span>
+      {{/isDefault}}
+      {{email}}
+    </li>
+  </script>
+
+  <script id="template-preferences-flashbackEmails-address" type="text/html">
+    <li class="flashbackEmails-address" data-email="{{email}}">
+      <span class="flashbackEmails-address-controls">
+        <span class="flashbackEmails-address-delete">Remove</span>
+      </span>
+      {{email}}
+    </li>
+  </script>
+
+  <script id="template-free-promo" type="text/html">
+    <hr/>
+
+    <div class="card-content subscription-info">
+      <h3>Go Unlimited</h3>
+      <ul class="card-list">
+        <li>Subscribe and get <strong>all your photos</strong> from the beginning of time.</li>
+        <li><strong style="color:#e57300;">Save 18%</strong> when you subscribe for a year.</li>
+      </ul>
+
+      <div class="card-controls lefty">
+        <button id="subscription-free-subscribe/monthly" class="button light">$4.99 per Month</button>
+        <button id="subscription-free-subscribe/yearly" class="button orange">$49 per Year</button>
+      </div>
+    </div>
+    <p class="card-fineprint">Everpix reserves the right to limit excessive use and the unlimited photos offer pertains to your personal, non-commercial use only.</p>
+  </script>
+
+  <script id="template-free-status" type="text/html">
+    <div class="card-content free-status">
+      <div class="free-header">
+        <h5>You are using <strong>Everpix Free</strong></h5>
+        <h3>
+          {{#linkToBonusPanel}}<a href="#panel=bonus">Get Bonuses</a>{{/linkToBonusPanel}}
+          {{^linkToBonusPanel}}Get More Time{{/linkToBonusPanel}}
+        </h3>
+        <p>Your collection has <span class="free-status-photoCount">{{currentPhotoCount}}</span> photos from the past <span class="free-status-accessibleMonths">{{accessibleMonths}}</span> months.</p>
+      </div>
+      <div class="free-timeline" data-start="{{minDeferredYear}}" data-end="Today">
+          <div class="free-timeline-accessible" data-start="{{accessibleMonths}}">
+            <div class="free-timeline-bonus" data-months="{{bonusMonths}}">Bonus</div>
+            <div class="free-timeline-free">Free</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-subscription-details-stripe" type="text/html">
+    <div class="card-content">
+      <div class="settings-section">
+        <h5 class="settings-header">Account:</h5>
+        <div class="settings-content">
+          <p>
+            {{typely}} subscription
+            {{#nextBilling}}
+              <br/>
+              <span class="settings-hint">You will be billed next on {{nextBilling}}</span>
+            {{/nextBilling}}
+          </p>
+          <p>
+            <span id="subscription-details/editPlanType" class="preferences-launcher">Edit my subscription</span>
+          </p>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h5 class="settings-header">Billing:</h5>
+        <div class="settings-content subscription-details-billing{{#cardError}} cardError{{/cardError}}">
+          {{#hasCardInfo}}
+            <p>
+              <strong>{{cardType}}</strong> ending in <strong>{{lastFour}}</strong> expires {{cardExpiration}}
+            </p>
+            <p>
+              {{address.country}}, {{address.postal}}
+            </p>
+          {{/hasCardInfo}}
+          {{^hasCardInfo}}
+            <p>There was an error with your payment.<br/>Please update your billing information.</p>
+          {{/hasCardInfo}}
+          <p>
+            <span id="subscription-details/editBillingInfo" class="preferences-launcher">Update billing information</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-subscription-details-apple" type="text/html">
+    <div class="card-content">
+      <div class="settings-section">
+        <h5 class="settings-header">Account:</h5>
+        <div class="settings-content">
+          <p>
+            {{typely}} subscription<br/>
+            <span class="settings-hint">Apple iTunes Store</span>
+          </p>
+          <p>
+            <a class="preferences-launcher" href="http://help.everpix.com/web.html?page=itunes" target="_blank">Manage my subscription through iTunes</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-subscription-details-comped" type="text/html">
+    <div class="card-content">
+      <div class="settings-section">
+        <h5 class="settings-header">Account:</h5>
+        <div class="settings-content">
+          <p>
+            {{typely}} subscription<br/>
+            {{#expiration}}
+              <span class="settings-hint">Free through {{expiration}}</span>
+            {{/expiration}}
+            {{^expiration}}
+              <span class="settings-hint">Free account</span>
+            {{/expiration}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-subscription-unlimited" type="text/html">
+    <div class="card-content subscription-info">
+      <h3>Your account is free, <span style="text-decoration:line-through;">forever</span> for now!</h3>
+      <p>Hooray! Thanks for being such a great friend.</p>
+    </div>
+  </script>
+
+  <script id="template-subscription-countdown-unpaid" type="text/html">
+    <div class="card-content subscription-info">
+      <h2>Payment Failure</h2>
+
+      <p>Your subscription payment failed on {{dayOfPaymentFailure}}. You have <strong>{{daysLeft}} day{{#isPlural}}s{{/isPlural}} left</strong> to fix the problem.</p>
+
+      <ul class="card-list">
+        <li>Your account will revert to a free account on <strong>{{dayOfPaymentFailure}}</strong></li>
+        <li>Learn more about <a href="http://help.everpix.com/web.html?page=subscription" target="_blank"><strong>free accounts and subscriptions</strong></a></li>
+      </ul>
+    </div>
+  </script>
+
+  <script id="template-subscription-countdown-expiration" type="text/html">
+    <div class="card-content subscription-info">
+      <h2>Your Everpix subscription will expire in <strong>{{daysLeft}} day{{#isPlural}}s{{/isPlural}}</strong>.</h2>
+      <ul class="card-list">
+        <li>Your account will revert to a free account on <strong>{{dayOfReckoning}}</strong></li>
+        <li>Learn more about <a href="http://help.everpix.com/web.html?page=subscription" target="_blank"><strong>free accounts and subscriptions</strong></a></li>
+      </ul>
+    </div>
+  </script>
+
+  <script id="template-subscription-shutdown" type="text/html">
+    <div class="card-content subscription-info">
+      <h2>Everpix will be shutting down in <strong>{{daysLeft}} day{{#isPlural}}s{{/isPlural}}</strong>.</h2>
+      <ul class="card-list">
+        <li>Your account and all data will be deleted on <strong>{{dayOfReckoning}}</strong></li>
+        <li><a href="https://support.everpix.com/entries/22586374" target="_blank">Learn more about the shutdown</a></li>
+      </ul>
+    </div>
+  </script>
+
+  <script id="template-subscription-cancel" type="text/html">
+    <form id="preferences/subscription-cancel" class="card">
+      <fieldset class="card-content">
+        <h3>Cancel your subscription</h3>
+        <p>We're sorry to see you go! If you have any issues or question regarding Everpix, please email us at <a href="mailto:support@everpix.com">support@everpix.com</a>.</p>
+        <p><strong>What happens after my subscription ends?</strong></p>
+        <ul class="trial-info card-list">
+          <li>Your photos will continue to be uploaded</li>
+          <li>Your account will revert to a free account on {{dayOfReckoning}}</li>
+          <li>You can still access all your photos from the <strong>last 12 months</strong></li>
+          <li>You can still access Photo Mail you have received</li>
+        </ul>
+        <p>As per our <a href="https://www.everpix.com/legal/terms.html" target="_blank">Terms of Service</a>, we do not provide refunds or credits for any partial months or years of subscription.</p>
+
+        <hr/>
+
+        <div class="formSection">
+          <div class="formField">
+            <input type="checkbox" id="preferences/subscription-cancel/confirm" data-validation-required>
+            <label for="preferences/subscription-cancel/confirm" class="formField-label">
+              I understand that by cancelling my subscription,<br/>
+              my account will revert to a free account.
+            </label>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Cancel Subscription" id="preferences/subscription-cancel/submit" class="button red" data-value-pending="Cancelling&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-edit-subscription" type="text/html">
+    <form id="edit-subscription" class="card">
+      <fieldset class="card-content">
+        <h3>Edit your subscription</h3>
+        <p>You can choose to be billed monthly or yearly for your Everpix subscription.</p>
+
+        <div class="settings-section">
+          <h5 class="settings-header">Subscription:</h5>
+          <ul class="settings-content">
+            <li class="settings-item{{#isMonthly}} selected{{/isMonthly}}">
+              <input type="radio" name="edit-subscription/type" id="edit-subscription/monthly" value="monthly"{{#isMonthly}} checked{{/isMonthly}}>
+              <label for="edit-subscription/monthly">
+                Monthly subscription<br/>
+                <span class="subscription-type-price">$4.99 / month</span>
+              </label>
+            </li>
+            <li class="settings-item{{#isYearly}} selected{{/isYearly}}">
+              <input type="radio" name="edit-subscription/type" id="edit-subscription/yearly" value="yearly"{{#isYearly}} checked{{/isYearly}}>
+              <label for="edit-subscription/yearly">
+                Yearly subscription<br/>
+                <span class="subscription-type-price">$49 / year</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <div class="formSection">
+          <div class="card-controls formField">
+            <input type="submit" value="Save" id="edit-subscription/submit" class="button" data-value-pending="Saving&hellip;">
+
+            <div class="card-controls-extra">
+              <span id="edit-subscription/cancel" class="preferences-launcher">Cancel my subscription</span>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-billingInfo" type="text/html">
+    <form id="billingInfo" class="card">
+      <fieldset class="card-content">
+        <h3>
+          {{#isUpdate}}Update your credit card information{{/isUpdate}}
+          {{^isUpdate}}Enter your credit card information{{/isUpdate}}
+        </h3>
+
+        <hr/>
+
+        <div class="billingInfo-weAccept">
+          We Accept:
+          <ul class="billingInfo-weAccept-list">
+            <li data-type="visa">Visa</li>
+            <li data-type="mc">MasterCard</li>
+            <li data-type="amex">American Express</li>
+            <li data-type="discover">Discover</li>
+            <li data-type="jcb">JCB</li>
+          </ul>
+        </div>
+
+        <div class="formSection">
+          <div class="formField">
+            <label for="billingInfo/cardNumber" class="formField-label">Card Number</label>
+            <input type="text" id="billingInfo/cardNumber" data-validation-required data-validation-creditcard>
+          </div>
+          <div class="formField half" class="formField-label">
+            <label for="billingInfo/cvc" class="formField-label">
+              CVC
+              <span class="formField-label-info">
+                <span class="bubble">
+                  A three- or four-digit security code found on the back of your credit card (or on the front, for American Express cards).
+                </span>
+              </span>
+            </label>
+            <input type="text" id="billingInfo/cvc" data-validation-required data-validation-cvc>
+          </div>
+          <div class="formField half">
+            <label for="billingInfo/expMonth" class="formField-label">Expiration</label>
+            <select id="billingInfo/expMonth" data-validation-required></select>
+            <select id="billingInfo/expYear" data-validation-required data-validation-expiration-month="billingInfo/expMonth" data-validation-expiration-year="billingInfo/expYear"></select>
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="formSection">
+          <div class="formField">
+            <label for="billingInfo/name" class="formField-label">Cardholder Name</label>
+            <input type="text" id="billingInfo/name" value="{{billingInfo.name}}" data-validation-required>
+          </div>
+          <div class="formField half">
+            <label for="billingInfo/country" class="formField-label">Country</label>
+            <select id="billingInfo/country" data-validation-required></select>
+          </div>
+          <div class="formField half">
+            <label for="billingInfo/postal" class="formField-label">Postal Code</label>
+            <input type="text" id="billingInfo/postal" value="{{billingInfo.billingAddress.zip}}" data-validation-required>
+          </div>
+        {{^isUpdate}}
+
+        </div>
+
+        <hr/>
+
+        <div class="formSection">
+          <div class="formField half">
+            <span class="formField-label" data-hint="{{#isYearly}}(Yearly){{/isYearly}}{{#isMonthly}}(Monthly){{/isMonthly}}">Total</span>
+            <div class="billingInfo-price">
+              <span class="billingInfo-price-base">${{basePrice}}</span>
+              <span class="billingInfo-price-discounted"></span>
+            </div>
+          </div>
+          {{#allowPromo}}
+            <div class="formField half">
+              <span class="billingInfo-addPromo disabled">add</span>
+              <label for="billingInfo/promoCode" class="formField-label">Promo Code</label>
+              <input type="text" id="billingInfo/promoCode">
+              <span class="spinner billingInfo-promoSpinner"></span>
+            </div>
+          {{/allowPromo}}
+        {{/isUpdate}}
+
+          <div class="formField card-controls">
+            <input type="submit" value="{{#isUpdate}}Update{{/isUpdate}}{{^isUpdate}}Subscribe{{/isUpdate}}" id="billingInfo/submit" class="button" data-value-pending="{{#isUpdate}}Updating{{/isUpdate}}{{^isUpdate}}Subscribing{{/isUpdate}}&hellip;">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="card-fineprint">
+        Your payment data is encrypted and secure. You will be charged {{#isYearly}}yearly{{/isYearly}}{{#isMonthly}}monthly{{/isMonthly}} until you cancel your subscription.
+      </div>
+    </form>
+  </script>
+
+  <script id="template-subscription-success" type="text/html">
+    <div id="preferences/subscription-success" class="card">
+      <div class="card-content">
+        <h3>Thanks for subscribing to Everpix!</h3>
+        <p>We'll start processing all the photos you've synced to Everpix right away. It may take a while for everything to show up, depending on the size of your collection.</p>
+        <div class="card-controls">
+          <button class="subscription-success-continue button">Got it</button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-invite" type="text/html">
+    <form id="invite" class="card" novalidate>
+      <fieldset class="card-content">
+        <h3>Spread the Word</h3>
+        {{#isFree}}
+          <p>For every friend who signs up and syncs photos with the Everpix app (Mac or PC), you and your friend will <strong>both receive 6 bonus months</strong> of Everpix.</p>
+        {{/isFree}}
+        {{^isFree}}
+          <p>Friends who sign up from your invitation and sync photos with the Everpix app (Mac or PC) will get <strong>6 bonus months</strong> of photos.</p>
+        {{/isFree}}
+        <div class="formSection">
+          <div class="formField">
+            <label for="invite/link" class="formField-label">Share This Link</label>
+            <input type="text" id="invite/link" value="{{inviteLink}}">
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="formSection">
+          <div class="formField half">
+            <label for="invite/emails" class="formField-label">Or Share via Email</label>
+            <input type="email" id="invite/emails" data-validation-required data-validation-email>
+          </div>
+          <div class="formField">
+            <label for="invite/message" class="formField-label" data-hint="(optional)">Short Message</label>
+            <input type="text" id="invite/message">
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Send Invite" id="invite/submit" class="button" data-value-pending="Sending&hellip;">
+          </div>
+        </div>
+      </fieldset>
+      <div class="card-fineprint">We promise not to spam your friends.</div>
+    </form>
+  </script>
+
+  <script id="template-invite-done" type="text/html">
+    <div id="invite/done" class="card">
+      <div class="card-content">
+        {{#invitees}}
+          <h3>Thanks!</h3>
+          <p>
+            We'll send your friend{{#inviteesPlural}}s{{/inviteesPlural}} {{{invitees}}}
+            {{#inviteesPlural}}some invites{{/inviteesPlural}}
+            {{^inviteesPlural}} an invite{{/inviteesPlural}}
+            {{#time}}in about <strong>{{time}}</strong>.{{/time}}
+            {{^time}}right away.{{/time}}
+          </p>
+        {{/invitees}}
+        {{#users}}
+          <p>Your friend{{#usersPlural}}s{{/usersPlural}} {{{users}}} already {{#usersPlural}}have Everpix accounts{{/usersPlural}}{{^usersPlural}}has an Everpix account{{/usersPlural}}. You should send them a Photo Mail!</p>
+        {{/users}}
+        <div class="card-controls">
+          <button class="button">Okay</button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-connect-facebook" type="text/html">
+    <div id="connections/web/connect/facebook" class="card">
+      <div class="card-content">
+        <h3>You are about to connect your Facebook account!</h3>
+        <p>By connecting your Facebook account to Everpix, you'll be able to:</p>
+        <ul>
+          <li>Share photos from Everpix to your Facebook account.</li>
+          <li>Import your photos and other people's photos that you've been tagged in.</li>
+        </ul>
+        <p>If you choose Sharing Only, Everpix will not sync any photos from Facebook.</p>
+        <div class="card-controls">
+          <button class="connect-facebook-importPhotos button">Import Photos</button>
+          <button class="connect-facebook-sharingOnly button light">Sharing Only</button>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-connect-gmail-folder" type="text/html">
+    <form id="connections/web/connect/gmail" class="card">
+      <fieldset class="card-content">
+        <div class="formSection">
+          <div class="formField">
+            <label for="connections/web/connect/gmail/folder" class="formField-label">IMAP Folder</label>
+            <input type="text" id="connections/web/connect/gmail/folder">
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Next" id="connections/web/connect/gmail/submit" class="button" data-value-pending="Connecting&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-disconnect" type="text/html">
+    <form id="connections/disconnect" class="card">
+      <fieldset class="card-content">
+        <p><strong>Are you sure you want to disconnect {{title}}?</strong></p>
+        <p>By disconnecting this source, photos from {{title}} will no longer be synced to Everpix.</p>
+        <p>You can delete the photos already imported from {{title}} by going to the Delete tab.</p>
+        <div class="card-controls">
+          <input type="submit" value="Continue" id="connections/disconnect/submit" class="button" data-value-pending="Disconnecting&hellip;"/>
+          <span class="card-controls-link cancelLink">Cancel</span>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-source-listItem" type="text/html">
+    <li class="source{{#isDevice}} device{{/isDevice}}{{#isDeleting}} deleting{{/isDeleting}}" data-type="{{type}}">
+      {{^isDeleting}}
+        <!--<div class="source-controls">
+          {{#hasSubSources}}
+            <span class="source-control-deleteAll">Delete All</span>
+          {{/hasSubSources}}
+          {{^hasSubSources}}
+            <span class="source-control-delete">Delete</span>
+          {{/hasSubSources}}
+          {{#allowPurge}}<span class="source-control-purge">Purge</span>{{/allowPurge}}
+        </div>-->
+      {{/isDeleting}}
+      <h4 class="source-title" title="{{name}}{{#client}} - {{client}}{{/client}}{{#createdDate}} - Created {{createdDate}}{{/createdDate}}">
+        <span class="source-name">{{name}}</span>
+        {{#client}}
+          <span class="source-client"> - {{client}}</span>
+        {{/client}}
+      </h4>
+      {{#hasSubSources}}
+        <ul class="source-subSources"></ul>
+      {{/hasSubSources}}
+    </li>
+  </script>
+
+  <script id="template-sources-empty" type="text/html">
+    <p class="sources-empty card-loadable-empty">
+      No photo sources found.<br/>
+      Connect <a href="#panel=connections/web">Web Services</a> or get some<br/>
+      <a href="#panel=connections/apps">Everpix Apps</a> to start syncing!
+    </p>
+  </script>
+
+  <script id="template-devices-empty" type="text/html">
+    <p class="devices-empty card-loadable-empty">
+      No connected devices found.<br/>
+      Get some <a href="#panel=connections/apps">Everpix Apps</a> to start syncing!
+    </p>
+  </script>
+
+  <script id="template-source-deleteWarning" type="text/html">
+    <form id="source-deleteWarning" class="card">
+      <fieldset class="card-content">
+        <p><strong>Are you sure you want to delete all photos from {{name}}?</strong></p>
+        <p>Photos will be deleted from Everpix permanently and cannot be recovered. If you're having trouble syncing or removing photos from Everpix, please <a href="http://help.everpix.com/web.html?page=deleting-photos" target="_blank">read this help article</a> before proceeding.</p>
+        {{#warnDisconnect}}
+          <p>Photos will continue to be imported from {{name}} unless you disconnect it by going to the Web tab.</p>
+        {{/warnDisconnect}}
+        <p>It may be several hours before these photos are fully deleted from your Everpix collection.</p>
+        <div class="card-controls">
+          <input type="submit" value="Delete" id="source-deleteWarning/submit" class="button red" data-value-pending="Deleting&hellip;" />
+          <span class="card-controls-link cancelLink">Cancel</span>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-source-purgeWarning" type="text/html">
+    <form id="source-purgeWarning" class="card">
+      <fieldset class="card-content">
+        <p><strong>Are you sure you want to purge {{name}}?</strong></p>
+        <p>All photos which have been removed from this source but are still in Everpix will be completely deleted from your collection. <a href="http://help.everpix.com/web.html?page=deleting-photos" target="_blank">Learn more</a></p>
+        <p>Purging photos is permanent and cannot be undone.</p>
+        <div class="card-controls">
+          <input type="submit" value="Purge Photos" id="source-purgeWarning/submit" class="button red" data-value-pending="Purging&hellip;" />
+          <span class="card-controls-link cancelLink">Cancel</span>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-device-connection" type="text/html">
+    <li class="connection device-connection" data-type="{{type}}">
+      <h4 class="connection-title" title="{{name}}{{#client}} - {{client}}{{/client}}">{{name}}</h4>
+      <p class="connection-subtitle device-connection-lastSync">Synced {{timeAgo}}</p>
+      <div class="connection-controls">
+        <button class="button green device-connection-connected">Connected</button>
+        <button class="button white device-connection-disconnect">Disconnect</button>
+      </div>
+    </li>
+  </script>
+
+  <script id="template-photoPage-listItem" type="text/html">
+    <li class="photoPage-listItem" data-id="{{id}}">
+      {{#linkToPage}}<a href="{{url}}" class="photoPage-listItem-details" title="{{title}} - Created {{date}}" target="_blank">{{/linkToPage}}
+      {{^linkToPage}}<span class="photoPage-listItem-details" title="{{title}} - Created {{date}}">{{/linkToPage}}
+        <span class="photoPage-listItem-thumbnail{{^thumbnailSrc}} empty{{/thumbnailSrc}}"{{#thumbnailSrc}} style="background-image:url('{{thumbnailSrc}}');{{/thumbnailSrc}}"></span>
+        <span class="photoPage-listItem-title">
+          {{title}}
+          <span class="photoPage-listItem-photoCount">({{photoCount}} photo{{#isPlural}}s{{/isPlural}})</span>
+        </span>
+        <span class="photoPage-listItem-date">Created {{formattedDate}}</span>
+      {{#linkToPage}}</a>{{/linkToPage}}
+      {{^linkToPage}}</span>{{/linkToPage}}
+      <span class="photoPage-listItem-controls">
+        {{#controls.baleet}}<span class="photoPage-listItem-delete">Delete</span>{{/controls.baleet}}
+        {{#controls.edit}}<span class="photoPage-listItem-edit">Edit</span>{{/controls.edit}}
+        {{#controls.add}}<span class="photoPage-listItem-add">Add</span>{{/controls.add}}
+      </span>
+    </li>
+  </script>
+
+  <script id="template-home-emptyMessage" type="text/html">
+    <div class="view-emptyMessage home-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos in your collection yet.</h4>
+      <p>Use the Welcome Guide to get started.</p>
+      <p>
+        You can also set up syncing from web<br/>
+        services via the Connections panel.
+      </p>
+      <div class="view-emptyMessage-buttons">
+        <a href="welcome.html" class="button translucent">Get Started</a>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-home-importingMessage-free" type="text/html">
+    <div class="view-emptyMessage home-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos from the past 12 months</h4>
+      <p>Everpix Free keeps a rolling window of all your latest photos from the past 12 months.<br/>
+        <a href="http://help.everpix.com/web.html?page=subscription" target="_blank">Learn more about subscription</a>
+      </p>
+      <p>If syncing for the first time, it may take a while for your photos to upload, be processed, and show up in your collection.</p>
+    </div>
+  </script>
+
+  <script id="template-home-importingMessage-subscriber" type="text/html">
+    <div class="view-emptyMessage home-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos in your collection yet.</h4>
+      <p>Use the Welcome Guide to get started, or set up syncing from web services via the Connections panel.</p>
+      <p>If syncing for the first time, it may take a while for your photos to upload, be processed, and show up in your collection.</p>
+      <div class="view-emptyMessage-buttons">
+        <a href="welcome.html" class="button translucent">Get Started</a>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-moments-emptyMessage-free" type="text/html">
+    <div class="view-emptyMessage moments-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos from the past 12 months.</h4>
+      <p>Everpix Free keeps a rolling window of all your latest photos from the past 12 months.<br/>
+        <a href="http://help.everpix.com/web.html?page=subscription" target="_blank">Learn more about subscription</a>
+      </p>
+      <p>If syncing for the first time, it may take a while for your photos to upload, be processed, and show up in your collection.</p>
+    </div>
+  </script>
+
+  <script id="template-moments-emptyMessage-subscriber" type="text/html">
+    <div class="view-emptyMessage moments-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos in My Photos yet.</h4>
+      <p>
+        The My Photos view displays all the photos in your collection, organized by date and time.<br/>
+        Photos are grouped together, with moments separated by gaps of a few hours.
+      </p>
+    </div>
+  </script>
+
+  <script id="template-momentYear-emptyMessage" type="text/html">
+    <div class="view-emptyMessage moments-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos in {{thisView}}.</h4>
+      <p>
+        The My Photos view displays all the photos in your collection, organized by date and time.<br/>
+        Photos are grouped together, with moments separated by gaps of a few hours.
+      </p>
+    </div>
+  </script>
+
+  <script id="template-sources-emptyMessage-free" type="text/html">
+    <div class="view-emptyMessage sources-emptyMessage">
+      <h4 class="view-emptyMessage-title">No sources from the past 12 months.</h4>
+      <p>Everpix Free keeps a rolling window of all your latest photos from the past 12 months.<br/>
+        <a href="http://help.everpix.com/web.html?page=subscription" target="_blank">Learn more about subscription</a>
+      </p>
+      <p>If syncing for the first time, it may take a while for your photos to upload, be processed, and show up in your collection.</p>
+    </div>
+  </script>
+
+  <script id="template-sources-emptyMessage-subscriber" type="text/html">
+    <div class="view-emptyMessage sources-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos in Sources yet.</h4>
+      <p>
+        You probably spend a lot of time organizing your photos. The Sources view reflects all that work, mirroring your photo collection as closely as possible to the original source.
+      </p>
+    </div>
+  </script>
+
+  <script id="template-sourceYear-emptyMessage" type="text/html">
+    <div class="view-emptyMessage sources-emptyMessage">
+      <h4 class="view-emptyMessage-title">No sources in {{thisView}}.</h4>
+      <p>
+        You probably spend a lot of time organizing your photos. The Sources view reflects all that work, mirroring your photo collection as closely as possible to the original source.
+      </p>
+    </div>
+  </script>
+
+  <script id="template-source-emptyFilterMessage" type="text/html">
+    <div class="view-emptyMessage view-emptyFilterMessage sources-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos from {{sourceName}} in {{thisView}}.</h4>
+      <p>You can select a different source filter from the <a href="#panel=nav">Navigation Panel</a>.</p>
+    </div>
+  </script>
+
+  <script id="template-photoMails-emptyMessage" type="text/html">
+    <div class="view-emptyMessage photomails-emptyMessage">
+      <h4 class="view-emptyMessage-title">You have no Photo Mail.</h4>
+      <p>When another Everpix user shares photos with you through Photo Mail, they'll appear here.</p>
+      <p><a href="http://help.everpix.com/web.html?page=photomail" target="_blank">Learn more about Photo Mail</a></p>
+    </div>
+  </script>
+
+  <script id="template-sentMails-emptyMessage" type="text/html">
+    <div class="view-emptyMessage photomails-emptyMessage">
+      <h4 class="view-emptyMessage-title">You've sent no Photo Mail.</h4>
+      <p>When you share photos with friends and family through Photo Mail, they'll appear here.</p>
+      <p><a href="http://help.everpix.com/web.html?page=photomail" target="_blank">Learn more about Photo Mail</a></p>
+    </div>
+  </script>
+
+  <script id="template-highlights-emptyMessage-free" type="text/html">
+    <div class="view-emptyMessage highlights-emptyMessage">
+      <h4 class="view-emptyMessage-title">No highlights from the past 12 months.</h4>
+      <p>Everpix Free keeps a rolling window of all your latest photos from the past 12 months.<br/>
+        <a href="http://help.everpix.com/web.html?page=subscription" target="_blank">Learn more about subscription</a>
+      </p>
+      <p>Generating your Highlights takes some extra time, so check back in a few hours if you don't see any photos here yet.</p>
+    </div>
+  </script>
+
+  <script id="template-highlights-emptyMessage-subscriber" type="text/html">
+    <div class="view-emptyMessage highlights-emptyMessage">
+      <h4 class="view-emptyMessage-title">No photos in Highlights yet.</h4>
+      <p>The Highlights view uses image analysis technology to bring your best photos forward.</p>
+      <p>Generating your Highlights takes some extra time, so check back in a few hours if you don't see any photos here yet.</p>
+    </div>
+  </script>
+
+  <script id="template-highlightYear-emptyMessage" type="text/html">
+    <div class="view-emptyMessage highlights-emptyMessage">
+      <h4 class="view-emptyMessage-title">No highlights for {{thisView}}.</h4>
+      <p>The Highlights view uses image analysis technology to bring your best photos forward.</p>
+      <p>Generating your Highlights takes some extra time, so check back in a few hours if you don't see any photos here yet.</p>
+    </div>
+  </script>
+
+  <script id="template-photoPages-emptyMessage" type="text/html">
+    <div class="view-emptyMessage photopages-emptyMessage">
+      <h4 class="view-emptyMessage-title">You have no Photo Pages.</h4>
+      <p>A Photo Page is a fast, easy way to share a photo or a collection of photos to anyone on the web.</p>
+      <p><a href="http://help.everpix.com/web.html?page=photopages" target="_blank">Learn more about Photo Pages</a></p>
+    </div>
+  </script>
+
+  <script id="template-purge-emptyMessage" type="text/html">
+    <div class="view-emptyMessage sources-emptyMessage">
+      <h4 class="view-emptyMessage-title">Nothing to purge.</h4>
+      <p>There are no photos which have been removed from this source but are still in Everpix.</p>
+    </div>
+  </script>
+
+  <script id="template-sampler" type="text/html">
+    <div class="sampler{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{id}}">
+      <div class="sampler-contents">
+        {{#moreLink}}<a href="{{moreLink}}" class="sampler-moreLink sampler-floatLink">{{moreLinkTitle}}</a>{{/moreLink}}
+        {{#title}}<h3 class="sampler-title">
+          {{#moreLink}}<a href="{{moreLink}}" class="sampler-title-text">{{title}}</a>{{/moreLink}}
+          {{^moreLink}}<span class="sampler-title-text">{{title}}</span>{{/moreLink}}
+        </h3>{{/title}}
+        {{#description}}<p class="sampler-description">{{description}}</p>{{/description}}
+        {{#hasGrids}}<div class="sampler-grids"></div>{{/hasGrids}}
+        <div class="sampler-footer">
+          {{#hasLoadMore}}<button class="button translucent sampler-loadMore" data-value-pending="Loading&hellip;">Load More</button>{{/hasLoadMore}}
+          {{#moreLink}}<a href="{{moreLink}}" class="sampler-moreLink sampler-floatLink">{{moreLinkTitle}}</a>{{/moreLink}}
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-sampler-emptyMessage" type="text/html">
+    <div class="sampler-coverMessage sampler-emptyMessage">
+      <div class="sampler-coverMessage-content">
+        <h4 class="sampler-coverMessage-title">{{title}}</h4>
+        <p>Failed to load photos. Please reload the page.</p>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-flashback-sampler" type="text/html">
+    <div class="sampler{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{id}}">
+      <div class="sampler-contents">
+        {{#moreLink}}<a href="{{moreLink}}" class="sampler-moreLink sampler-floatLink">See More</a>{{/moreLink}}
+        <span class="flashbackSampler-randomize sampler-floatLink">Randomize</span>
+        <h3 class="sampler-title">
+          {{#moreLink}}<a href="{{moreLink}}" class="sampler-title-text">{{title}}</a>{{/moreLink}}
+          {{^moreLink}}<span class="sampler-title-text">{{title}}</span>{{/moreLink}}
+        </h3>
+        {{#description}}<p class="sampler-description">{{description}}</p>{{/description}}
+        {{#hasGrids}}<div class="sampler-grids"></div>{{/hasGrids}}
+      </div>
+    </div>
+  </script>
+
+  <script id="template-flashback-sampler-subTitle" type="text/html">
+    <span class="flashbackSampler-subTitle" data-action="{{action}}">
+      {{title}}
+      {{#date}}
+        {{#momentID}}<a class="flashbackSampler-date" href="#view=moment-{{momentID}}">{{date}}</a>{{/momentID}}
+        {{^momentID}}<span class="flashbackSampler-date">{{date}}</span>{{/momentID}}
+      {{/date}}
+    </span>
+  </script>
+
+  <script id="template-flashback-sampler-fetchBubble" type="text/html">
+    <span class="bubble inverted hasSpinner oneLiner">
+      <span class="spinner"></span>
+      {{{message}}}
+    </span>
+  </script>
+
+  <script id="template-flashback-sampler-pendingMessage" type="text/html">
+    <div class="sampler-pendingMessage">
+      <span class="spinner"></span>
+      <h4>Loading&hellip;</h4>
+      <p>Finding photos you've taken on this day in history</p>
+    </div>
+  </script>
+
+  <script id="template-today" type="text/html">
+    <form id="today" class="card">
+      <fieldset class="card-content">
+        <div class="formSection">
+          <div class="formField">
+            <label for="today/date" class="formField-label" data-hint="(MM/DD)">Override Today's Date:</label>
+            <input type="text" id="today/date" value="{{#savedValue}}{{savedValue}}{{/savedValue}}">
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Set" id="today/submit" class="button" data-value-pending="Setting&hellip;">
+            {{#savedValue}}<span class="card-controls-link cancelLink">Clear override</span>{{/savedValue}}
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-photoMail-view" type="text/html">
+    <div class="view{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{id}}">
+      <div class="view-contents">
+        <div class="photoMail-info">
+          <div class="photoMail-sent">
+            {{#senderName}}<span class="photoMail-sender">From {{senderName}}</span>{{/senderName}}
+            {{#hasRecipients}}
+              <span class="photoMail-recipients">To
+                {{#recipients}}
+                  <span class="photoMail-recipient"{{#isUnread}} data-unread="unread" title="unread"{{/isUnread}}>{{email}}</span>
+                {{/recipients}}
+              </span>
+            {{/hasRecipients}}
+            <span class="photoMail-date">Sent {{sentDate}}</span>
+          </div>
+          {{#body}}<div class="photoMail-body">{{body}}</div>{{/body}}
+        </div>
+        {{#hasGrids}}<div class="view-grids"></div>{{/hasGrids}}
+      </div>
+    </div>
+  </script>
+
+  <script id="template-flashback-view" type="text/html">
+    <div class="view{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{id}}"></div>
+  </script>
+
+  <script id="template-flashback-explore-sheet" type="text/html">
+    <div class="view-sheet{{#extraClasses}} {{extraClasses}}{{/extraClasses}} initialState" id="{{viewID}}/{{id}}">
+      <div class="flashback-controls">
+        <div class="flashback-buttons"></div>
+        <h3 class="flashback-controls-tagLine">What would you like to see today?</h3>
+      </div>
+      <div class="view-contents{{#hasFootnoteNavigation}} pushBottom{{/hasFootnoteNavigation}}">
+        {{#hasGrids}}<div class="view-grids"></div>{{/hasGrids}}
+      </div>
+    </div>
+  </script>
+
+  <script id="template-flashback-today-emptyMessage" type="text/html">
+    <div class="view-emptyMessage flashback-emptyMessage">
+      <h4 class="view-emptyMessage-title">No Flashback for today</h4>
+      <p>Maybe tomorrow?</p>
+      <p>Check out <a href="#view=flashback/explore">Explore</a> for more photos.</p>
+    </div>
+  </script>
+
+  <script id="template-flashback-explore-emptyMessage" type="text/html">
+    <div class="view-emptyMessage flashback-emptyMessage">
+      <h4 class="view-emptyMessage-title">Explore View not yet computed</h4>
+      <p>Explore uses semantic data gathered from Everpix's Image Analysis, which can take a while to process.</p>
+    </div>
+  </script>
+
+  <script id="template-flashback-explore-button" type="text/html">
+    <span class="flashback-button" data-action="{{action}}">
+      <span class="bubble">{{title}}</span>
+    </span>
+  </script>
+
+  <script id="template-flashback-grid" type="text/html">
+    <div class="grid{{#extraClasses}} {{extraClasses}}{{/extraClasses}}{{#isExperimental}} experimental{{/isExperimental}}">
+      <div class="flashbackGrid-controls">
+        {{#hasShare}}<span class="flashbackGrid-share">Share</span>{{/hasShare}}
+      </div>
+      <h3 class="flashbackGrid-title" data-action="{{action}}">
+        {{title}}
+        {{#subtitle}}
+          {{#momentID}}<a class="flashbackGrid-date" href="#view=moment-{{momentID}}">{{subtitle}}</a>{{/momentID}}
+          {{^momentID}}<span class="flashbackGrid-date">{{subtitle}}</span>{{/momentID}}
+        {{/subtitle}}
+        {{#isEmpty}}
+          <span class="flashbackGrid-emptyMessage">
+            No Photos Found
+            <span class="flashbackGrid-emptyMessage-learnMore">
+              <span class="flashbackGrid-emptyMessage-learnMore-bubble bubble">
+                Your photos may not be done processing, or you may not have enough {{title}} photos. We're also training Everpix to be smarter at finding {{title}} photos in your collection.
+              </span>
+            </span>
+          </span>
+        {{/isEmpty}}
+        {{^isEmpty}}{{#isExperimental}}
+          <span class="flashbackGrid-experimentalMessage">
+            <span class="flashbackGrid-experimentalMessage-learnMore">
+              <span class="flashbackGrid-experimentalMessage-learnMore-bubble bubble">
+                Everpix is still learning more about {{title}} photos. You can help make the system smarter by submitting feedback!
+              </span>
+            </span>
+          </span>
+        {{/isExperimental}}{{/isEmpty}}
+      </h3>
+      {{^isEmpty}}
+        <div class="grid-contents"></div>
+      {{/isEmpty}}
+    </div>
+  </script>
+
+  <script id="template-semantic-view" type="text/html">
+    <div class="view{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{id}}">
+      <form id="semantic-search" novalidate>
+        <fieldset class="formSection">
+          <div class="formField">
+            <input type="email" id="semantic-search/term" data-validation-required placeholder="Semantic Tag">
+          </div>
+          <div class="formField">
+            <input type="submit" id="semantic-search/submit" value="Search" class="button">
+          </div>
+        </fieldset>
+      </form>
+      <div class="view-contents">
+        <div class="semantic-description">
+
+        </div>
+        {{#hasGrids}}<div class="view-grids"></div>{{/hasGrids}}
+      </div>
+    </div>
+  </script>
+
+  <script id="template-semantic-parameters" type="text/html">
+    <form id="semantic/parameters" class="card">
+      <fieldset class="card-content">
+        <div class="formSection">
+          <div class="formField">
+            <label for="semantic/parameters/likelihood" class="formField-label">Minimum Likelihood</label>
+            <input type="text" id="semantic/parameters/min-likelihood" value="{{#minLikelihood}}{{minLikelihood}}{{/minLikelihood}}"/>
+          </div>
+          <div class="formField">
+            <label for="semantic/parameters/max-likelihood" class="formField-label">Maximum Likelihood</label>
+            <input type="text" id="semantic/parameters/max-likelihood" value="{{#maxLikelihood}}{{maxLikelihood}}{{/maxLikelihood}}">
+          </div>
+          <div class="formField">
+            <label for="semantic/parameters/limit" class="formField-label">Limit</label>
+            <input type="text" id="semantic/parameters/limit" value="{{#limit}}{{limit}}{{/limit}}">
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Save" id="semantic/parameters/submit" class="button" data-value-pending="Saving&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-view-controls-month" type="text/html">
+    <div class="view-controls-month">
+      <span class="view-controls-button">Go to month</span>
+      <ul class="bubble bubbleMenu view-monthMenu inverted">
+        <li class="bubbleMenu-group">
+          <a class="bubbleMenu-button noIcon" href="#view=month-all">All Months</a>
+        </li>
+        <li class="bubbleMenu-group months-list">
+          {{#months}}
+            <a class="bubbleMenu-button noIcon" href="#view=month-{{number}}">{{name}}</a>
+          {{/months}}
+        </li>
+      </ul>
+    </div>
+  </script>
+
+  <script id="template-view-controls-sortOrder" type="text/html">
+    <div class="view-controls-sortOrder">
+      <span class="view-controls-button">Sort</span>
+      <ul class="bubble bubbleMenu view-sortOrderMenu inverted">
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button{{^sortAsc}} selected{{/sortAsc}}" data-order="desc">Newest First</span>
+        </li>
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button{{#sortAsc}} selected{{/sortAsc}}" data-order="asc">Oldest First</span>
+        </li>
+      </ul>
+    </div>
+  </script>
+
+  <script id="template-shareMenu" type="text/html">
+    <ul class="bubble bubbleMenu shareMenu inverted">
+      {{#title}}
+      <li class="bubbleMenu-group">
+        <div class="bubbleMenu-header">
+          <h4 class="bubbleMenu-title">{{title}}</h4>
+        </div>
+      </li>
+      {{/title}}
+      <li class="bubbleMenu-group">
+        <span class="bubbleMenu-button" data-service="photoPage">Photo Page</span>
+        <span class="bubbleMenu-button" data-service="photoMail">Photo Mail</span>
+      </li>
+      <li class="bubbleMenu-group">
+        <span class="bubbleMenu-button" data-service="facebook">Facebook</span>
+        {{#hasPath}}<span class="bubbleMenu-button" data-service="path">Path</span>{{/hasPath}}
+        <span class="bubbleMenu-button" data-service="twitter">Twitter</span>
+        <!--<span class="bubbleMenu-button" data-service="walgreens">Walgreens</span>-->
+      </li>
+    </ul>
+  </script>
+
+  <script id="template-context-miscMenu" type="text/html">
+    <ul class="bubble bubbleMenu miscMenu inverted">
+      {{#features.photoCount}}
+        <li class="bubbleMenu-group">
+          <div class="bubbleMenu-header">
+            <h4 class="bubbleMenu-title"><span class="context-miscMenu-photoCount">0</span> photos total</h4>
+            {{#features.hide}}
+              <h5 class="bubbleMenu-subtitle"><span class="context-miscMenu-hiddenCount">0</span> hidden <span class="context-miscMenu-hiddenPercentage">(0%)</span></h5>
+            {{/features.hide}}
+          </div>
+        </li>
+      {{/features.photoCount}}
+      {{#features.hide}}
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button context-miscMenu-showHidden">Reveal Hidden Photos</span>
+        </li>
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button context-miscMenu-hide">Hide All Photos</span>
+          <span class="bubbleMenu-button context-miscMenu-unhide">Unhide All Photos</span>
+        </li>
+      {{/features.hide}}
+      {{#features.editTime}}
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button context-miscMenu-editTime">Edit Time</span>
+        </li>
+      {{/features.editTime}}
+      {{#features.baleet}}
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button context-miscMenu-delete">Delete {{groupName}}</span>
+        </li>
+      {{/features.baleet}}
+      {{#features.download}}
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button context-miscMenu-download">Download Photos</span>
+        </li>
+      {{/features.download}}
+    </ul>
+  </script>
+
+  <script id="template-semantic-miscMenu" type="text/html">
+    <ul class="bubble bubbleMenu miscMenu inverted">
+      <li class="bubbleMenu-group">
+        <div class="bubbleMenu-header">
+          <h4 class="bubbleMenu-title"><span class="semantic-miscMenu-photoCount">0</span> photos total</h4>
+        </div>
+      </li>
+      <li class="bubbleMenu-group">
+        <span class="bubbleMenu-button semantic-miscMenu-parameters noIcon">Edit Parameters</span>
+      </li>
+    </ul>
+  </script>
+
+  <script id="template-context-hiddenBar" type="text/html">
+    <div class="context-hiddenBar stateBar" id="context-hiddenBar-{{id}}">
+      <div class="stateBar-contents">
+        All photos in this {{groupName}} are hidden.
+      </div>
+    </div>
+  </script>
+
+  <script id="template-contextPreview" type="text/html">
+    <a class="preview contextPreview{{#extraClasses}} {{extraClasses}}{{/extraClasses}}{{#isHidden}} hidden{{/isHidden}}{{#isUnread}} unread{{/isUnread}}"{{#filterSourceType}} data-source="{{filterSourceType}}"{{/filterSourceType}} data-size="{{size}}" href="#view={{viewID}}">
+      <span class="contextPreview-frame">
+        <span class="contextPreview-thumbnails"></span>
+      </span>
+      <span class="preview-checkMark">Selected</span>
+      <span class="contextPreview-info">
+        <span class="contextPreview-info-backdrop"></span>
+        <span class="contextPreview-title" title="{{{title}}} - {{photoCount}} photos">
+          {{#title}}{{{title}}}{{/title}}
+          {{#timeOfDay}}<span class="contextPreview-time">{{timeOfDay}}</span>{{/timeOfDay}}
+        </span>
+        {{#senderName}}<span class="contextPreview-sender">From {{senderName}}</span>{{/senderName}}
+        {{#numRecipients}}<span class="contextPreview-recipients">{{numRecipients}} recipients</span>{{/numRecipients}}
+        <span class="contextPreview-photoCount">{{photoCount}}</span>
+      </span>
+    </a>
+  </script>
+
+  <script id="template-photoPreview" type="text/html">
+    <div class="preview photoPreview{{#extraClasses}} {{extraClasses}}{{/extraClasses}}{{#isHidden}} hidden{{/isHidden}}{{#isDropCap}} dropCap{{/isDropCap}}{{#isSpotlight}} spotlight{{/isSpotlight}}{{#isDogEarred}} dogEarred{{/isDogEarred}}" data-size="{{size}}" data-columns="{{columns}}" data-photo-id="{{photoID}}">
+      <div class="photoPreview-frame">
+        <div class="photoPreview-thumbnail"></div>
+      </div>
+      <div class="preview-checkMark">Selected</div>
+      {{#features.hide}}
+        <!--<div class="photoPreview-visibilityControls">
+          <span class="photoPreview-show">Show</span>
+          <span class="photoPreview-hide">Hide</span>
+          <span class="spinner"></span>
+        </div>-->
+      {{/features.hide}}
+      {{#features.feedback}}
+        <div class="photoPreview-feedback">
+          {{#feedbackTooltip}}<span class="bubble photoPreview-feedback-tooltip">{{feedbackTooltip}}</span>{{/feedbackTooltip}}
+        </div>
+      {{/features.feedback}}
+      {{#features.dateTray}}
+        <div class="photoPreview-date">
+          <div class="photoPreview-date-info">
+            {{#features.jumpToMoment}}<span class="photoPreview-jumpTo" title="Jump to Moment">Jump to Moment</span>{{/features.jumpToMoment}}
+            {{#features.relativeDate}}<span class="photoPreview-date-relative">{{relativeDate}}</span>{{/features.relativeDate}}
+            {{#features.absoluteDate}}<span class="photoPreview-date-absolute">{{absoluteDate}}</span>{{/features.absoluteDate}}
+          </div>
+        </div>
+      {{/features.dateTray}}
+      {{#features.todayDate}}
+        <div class="photoPreview-todayDate">
+          {{#yearsAgo}}<span class="photoPreview-todayDate-yearsAgo">{{yearsAgo}}</span>{{/yearsAgo}}
+          {{#dayOfWeek}}<span class="photoPreview-todayDate-dayOfWeek">{{dayOfWeek}}</span>{{/dayOfWeek}}
+        </div>
+      {{/features.todayDate}}
+    </div>
+  </script>
+
+  <script id="template-messagePreview" type="text/html">
+    <span class="preview photoPreview messagePreview{{#class}} {{class}}{{/class}}" data-size="{{size}}">
+      <span class="messagePreview-message">{{message}}</span>
+    </span>
+  </script>
+
+  <script id="template-downloadWarning" type="text/html">
+    <div id="downloadWarning" class="card">
+      <div class="card-content">
+        <p>It may take several minutes to prepare these {{photoCount}} photos for download.</p>
+        <p>You will receive a download link via email when your photos are ready.</p>
+        <div class="card-controls">
+          <button class="downloadWarning-continue button">Continue</button>
+          <span class="card-controls-link cancelLink">Cancel</span>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-group-deleteWarning" type="text/html">
+    <form id="group-deleteWarning" class="card">
+      <fieldset class="card-content">
+        <p>
+          {{#isPlural}}All {{count}} {{itemsName}}{{/isPlural}}{{^isPlural}}The 1 {{itemName}}{{/isPlural}} in this {{groupName}} will be deleted. Are you sure you want to delete {{#isPlural}}these {{itemsName}}{{/isPlural}}{{^isPlural}}this {{itemName}}{{/isPlural}}?
+        </p>
+        <p>
+          {{#isPlural}}These {{itemsName}}{{/isPlural}}{{^isPlural}}This {{itemName}}{{/isPlural}} will also be deleted from other moments, sets, and Photo Mail in which {{#isPlural}}they appear{{/isPlural}}{{^isPlural}}it appears{{/isPlural}}, unless you have {{#isPlural}}copies of the photos{{/isPlural}}{{^isPlural}}a copy of the photo{{/isPlural}} in your collection from another source.
+        </p>
+        <p>Deletion is permanent and cannot be undone.</p>
+        <div class="card-controls">
+          <input type="submit" value="Delete {{groupName}}" id="group-deleteWarning/submit" class="button red" data-value-pending="Deleting&hellip;"/>
+          <span class="card-controls-link cancelLink">Cancel</span>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-context-editTime" type="text/html">
+    <form id="context-editTime" class="card">
+      <fieldset class="card-content">
+        <h3>Edit Photo Timestamps</h3>
+
+        <div class="formSection">
+          <div class="formField context-editTime-formField-mode">
+            <input type="radio" name="context-editTime/mode" id="context-editTime/mode/offset" value="offset" checked>
+            <label class="formField-label" for="context-editTime/mode/offset">Adjust Time</label>
+          </div>
+          <div class="formField context-editTime-formField-mode">
+            <input type="radio" name="context-editTime/mode" id="context-editTime/mode/absolute" value="absolute">
+            <label class="formField-label" for="context-editTime/mode/absolute">Set Time</label>
+          </div>
+
+          <div class="formField partial context-editTime-formField-offset">
+            <label for="context-editTime/years" class="formField-label">Years</label>
+            <input type="number" id="context-editTime/years" class="context-editTime-offset" step="1" value="0">
+          </div>
+          <div class="formField partial context-editTime-formField-offset">
+            <label for="context-editTime/months" class="formField-label">Months</label>
+            <input type="number" id="context-editTime/months" class="context-editTime-offset" step="1" value="0">
+          </div>
+          <div class="formField partial context-editTime-formField-offset">
+            <label for="context-editTime/days" class="formField-label">Days</label>
+            <input type="number" id="context-editTime/days" class="context-editTime-offset" step="1" value="0">
+          </div>
+          <div class="formField partial context-editTime-formField-offset">
+            <label for="context-editTime/hours" class="formField-label">Hours</label>
+            <input type="number" id="context-editTime/hours" class="context-editTime-offset" step="1" value="0">
+          </div>
+          <div class="formField partial context-editTime-formField-offset">
+            <label for="context-editTime/minutes" class="formField-label">Minutes</label>
+            <input type="number" id="context-editTime/minutes" class="context-editTime-offset" step="1" value="0">
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="formSection">
+          <div class="formField half">
+            <label for="context-editTime/date" class="formField-label" data-hint="e.g. {{nowDate}}">Date</label>
+            <input type="text" id="context-editTime/date" class="context-editTime-absolute" value="{{date}}" disabled="disabled" data-validation-date>
+          </div>
+          <div class="formField half">
+            <label for="context-editTime/time" class="formField-label" data-hint="e.g. {{nowTime}}">Start Time</label>
+            <input type="text" id="context-editTime/time" class="context-editTime-absolute" value="{{time}}" disabled="disabled" data-validation-time>
+          </div>
+
+          <div class="formField card-controls">
+            <input type="submit" value="Save" id="context-editTime/submit" class="button" data-value-pending="Saving&hellip;">
+          </div>
+        </div>
+      </fieldset>
+      <div class="card-fineprint">It may take a few minutes for the timestamps to be updated.</div>
+    </form>
+  </script>
+
+  <script id="template-photo-editTimestamp" type="text/html">
+    <form id="photo-editTimestamp" class="card">
+      <fieldset class="card-content">
+        <h3>Edit Photo Date</h3>
+        <div class="formSection">
+          <div class="formField half">
+            <label for="photo-editTimestamp/date" class="formField-label" data-hint="e.g. {{nowDate}}">Date</label>
+            <input type="text" id="photo-editTimestamp/date" value="{{date}}" data-validation-required data-validation-date>
+          </div>
+          <div class="formField half">
+            <label for="photo-editTimestamp/time" class="formField-label" data-hint="e.g. {{nowTime}}">Time</label>
+            <input type="text" id="photo-editTimestamp/time" value="{{time}}" data-validation-required data-validation-time>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Save" id="photo-editTimestamp/submit" class="button" data-value-pending="Saving&hellip;">
+            {{#originalTimestamp}}
+              <div class="card-controls-extra photo-originalTimestamp">
+                Original<span class="hideSmallScreen"> date</span>: <span id="photo-editTimestamp/original">{{originalTimestamp}}</span>
+              </div>
+            {{/originalTimestamp}}
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-photoPage-deleteWarning" type="text/html">
+    <form id="photoPage-deleteWarning" class="card">
+      <fieldset class="card-content">
+        <h3>Are you sure you want to delete this Photo Page?</h3>
+        <p>If you delete this Photo Page, it will no longer be accessible by its public URL. Deletion is permanent and cannot be undone.</p>
+        <div class="card-controls">
+          <input type="submit" value="Delete Photo Page" id="photoPage-deleteWarning/submit" class="button red" data-value-pending="Deleting&hellip;"/>
+          <span class="card-controls-link cancelLink">Cancel</span>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-photo-info" type="text/html">
+    <div class="photo-info" data-pid="{{pid}}">
+      <div class="photo-info-container">
+        <div class="photo-info-date">
+          <h4 class="photo-info-date-absolute">{{absoluteDate}}</h4>
+          {{#relativeDate}}<p class="photo-info-date-relative">{{relativeDate}}</p>{{/relativeDate}}
+        </div>
+
+        {{#captureDevice}}
+          <ul class="photo-info-device">
+            {{#camera}}<li class="photo-info-camera">{{camera}}</li>{{/camera}}
+            {{#lens}}<li class="photo-info-lens">{{lens}}</li>{{/lens}}
+          </ul>
+        {{/captureDevice}}
+
+        {{#exif}}
+          <div class="photo-info-exif">
+            <table>
+              <tr>
+                <td class="photo-info-exif-iso" title="{{#exif.isoSpeedRatings}}ISO {{exif.isoSpeedRatings}}{{/exif.isoSpeedRatings}}{{^exif.isoSpeedRatings}}Unknown ISO{{/exif.isoSpeedRatings}}">
+                  {{#exif.isoSpeedRatings}}
+                    ISO {{exif.isoSpeedRatings}}
+                  {{/exif.isoSpeedRatings}}
+                  {{^exif.isoSpeedRatings}}
+                    --
+                  {{/exif.isoSpeedRatings}}
+                </td>
+                <td class="photo-info-exif-focalLength" title="{{#exif.focalLength}}Focal Length: {{exif.focalLength}} mm{{/exif.focalLength}}{{^exif.focalLength}}Unknown Focal Length{{/exif.focalLength}}">
+                  {{#exif.focalLength}}
+                    {{exif.focalLength}} mm
+                  {{/exif.focalLength}}
+                  {{^exif.focalLength}}
+                    --
+                  {{/exif.focalLength}}
+                </td>
+                <td class="photo-info-exif-exposureBiasValue" title="{{#exif.exposureBiasValue}}Exposure Bias Value: {{exif.exposureBiasValue}} EV{{/exif.exposureBiasValue}}{{^exif.exposureBiasValue}}Unknown Exposure Bias Value{{/exif.exposureBiasValue}}">
+                  {{#exif.exposureBiasValue}}
+                    {{exif.exposureBiasValue}} EV
+                  {{/exif.exposureBiasValue}}
+                  {{^exif.exposureBiasValue}}
+                    --
+                  {{/exif.exposureBiasValue}}
+                </td>
+                <td class="photo-info-exif-fNumber" title="{{#exif.fNumber}}F-stop: f/{{exif.fNumber}}{{/exif.fNumber}}{{^exif.fNumber}}Unknown F-stop{{/exif.fNumber}}">
+                  {{#exif.fNumber}}
+                    f/{{exif.fNumber}}
+                  {{/exif.fNumber}}
+                  {{^exif.fNumber}}
+                    --
+                  {{/exif.fNumber}}
+                </td>
+                <td class="photo-info-exif-exposureTime" title="{{#exif.exposureTime}}Exposure Time: {{exif.exposureTime}} s{{/exif.exposureTime}}{{^exif.exposureTime}}Unknown Exposure Time{{/exif.exposureTime}}">
+                  {{#exif.exposureTime}}
+                    {{exif.exposureTime}} s
+                  {{/exif.exposureTime}}
+                  {{^exif.exposureTime}}
+                    --
+                  {{/exif.exposureTime}}
+                </td>
+              </tr>
+            </table>
+          </div>
+        {{/exif}}
+        {{^exif}}
+          <hr class="photo-info-exif-rule">
+        {{/exif}}
+
+        {{#location}}
+          <div class="photo-info-location">
+            {{#location.name}}
+              <h5 class="photo-info-location-name">{{{location.name}}}</h5>
+            {{/location.name}}
+            <a href="{{location.mapLink}}" target="_blank" title="See in Google Maps" style="background-image:url('{{location.minimapURL}}');" class="photo-info-location-map">
+              <span class="photo-info-location-map-marker" title="{{location.description}}">{{location.latitude}}, {{location.longitude}}</span>
+            </a>
+
+          {{#hasNearbyPhotos}}
+            <div class="photo-info-nearby">
+              <h5 class="photo-info-nearby-title">Nearby photos:</h5>
+              <div class="photo-info-nearby-thumbnails"></div>
+            </div>
+          {{/hasNearbyPhotos}}
+          </div>
+        {{/location}}
+
+        <div class="photo-info-sources">
+          <h5 class="photo-info-sources-title">Source{{#pluralSources}}s{{/pluralSources}}:</h5>
+          {{#displaySources}}
+            <div class="photo-info-source" data-source-type="{{type}}">
+              <h6 class="photo-info-source-title">
+                {{title}}
+              </h6>
+
+              {{#deviceName}}
+                <p class="photo-info-source-device">{{{deviceName}}}</p>
+              {{/deviceName}}
+
+              {{#fileName}}
+                <p class="photo-info-source-details"{{#filePath}} title="{{{filePath}}}"{{/filePath}}>
+                  <span class="photo-info-source-details-name">File:</span>
+                  <span class="photo-info-source-details-value truncate">{{{fileName}}}</span>
+                </p>
+              {{/fileName}}
+              {{#albumName}}
+                <p class="photo-info-source-details">
+                  <span class="photo-info-source-details-name">Album:</span>
+                  <span class="photo-info-source-details-value">{{{albumName}}}</span>
+                </p>
+              {{/albumName}}
+              {{#caption}}
+                <p class="photo-info-source-details">
+                  <span class="photo-info-source-details-name">Caption:</span>
+                  <span class="photo-info-source-details-value">{{{caption}}}</span>
+                </p>
+              {{/caption}}
+              {{#fromName}}
+                <p class="photo-info-source-details">
+                  <span class="photo-info-source-details-name">From:</span>
+                  <span class="photo-info-source-details-value">{{{fromName}}}</span>
+                </p>
+              {{/fromName}}
+              {{#fromEmail}}
+                <p class="photo-info-source-details">
+                  <span class="photo-info-source-details-name">From:</span>
+                  <span class="photo-info-source-details-value email">{{{fromEmail}}}</span>
+                </p>
+              {{/fromEmail}}
+              {{#subject}}
+                <p class="photo-info-source-details">
+                  <span class="photo-info-source-details-name">Subject:</span>
+                  <span class="photo-info-source-details-value">{{{subject}}}</span>
+                </p>
+              {{/subject}}
+            </div>
+          {{/displaySources}}
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-photo-fullInfo" type="text/html">
+    <form id="photo-fullInfo" class="card">
+      <fieldset class="card-content">
+        <span class="spinner"></span>
+        <div class="formSection">
+          <div class="formField hidden">
+            <a id="photo-fullInfo/link" class="preferences-launcher" target="_blank">View In External Page</a>
+            <label for="photo-fullInfo/details" class="formField-label">Photo Details</label>
+            <textarea id="photo-fullInfo/details"></textarea>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-photo-deleteWarning" type="text/html">
+    <form id="photo-deleteWarning" class="card">
+      <fieldset class="card-content">
+        <span class="card-thumbnail single" style="background-image:url('{{thumbnailSrc}}');"></span>
+        <p><strong>Are you sure you want to delete this photo?</strong></p>
+        <p>It will be completely removed from your collection, including from all moments, sets, and Photo Mail in which it appears. <a href="http://help.everpix.com/web.html?page=deleting-photos" target="_blank">Learn more</a></p>
+        <p><strong style="color:#8e3333">Deletion is permanent and cannot be undone.</strong></p>
+        <div class="card-controls">
+          <input type="submit" value="Delete Photo" id="photo-deleteWarning/submit" class="button red" data-value-pending="Deleting&hellip;"/>
+          <span class="card-controls-link cancelLink">Cancel</span>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-semanticFeedback-explanation" type="text/html">
+    <form id="semanticFeedback-explanation" class="card">
+      <fieldset class="card-content">
+        <p><strong>Image Analysis Feedback</strong></p>
+        <p>Would you like to donate a copy of your photo when providing feedback to help make Everpix smarter? <a href="http://help.everpix.com/web.html?page=feedback" target="_blank">Learn more</a></p>
+        <div class="card-controls">
+          <input type="submit" value="Okay" id="semanticFeedback-explanation/submit" class="button" data-value-pending="Saving&hellip;"/>
+          <span class="card-controls-link cancelLink">No Thanks</span>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-semanticFeedback-confirmation" type="text/html">
+    <form id="semanticFeedback-confirmation" class="card">
+      <fieldset class="card-content">
+        <span class="card-thumbnail single" style="background-image:url('{{thumbnailSrc}}');"></span>
+        <p><strong>{{title}}</strong></p>
+        <p>We will use this feedback to help teach Everpix about this type of photos.</p>
+        <div class="card-controls">
+          <input type="submit" value="Submit Feedback" id="semanticFeedback-confirmation/submit" class="button" data-value-pending="Submitting&hellip;"/>
+          <span class="card-controls-link cancelLink">Cancel</span>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-serviceUnconnectedWarning" type="text/html">
+    <div class="card">
+      <div class="card-content">
+        <h3>Connect to {{serviceTitle}}</h3>
+        <p>In order to share to {{serviceTitle}}, you need to connect your account to Everpix.</p>
+        <div class="card-controls">
+          <a href="#panel=connections/web" class="button">See Connections</a>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-share-facebook" type="text/html">
+    <form id="share/facebook" class="card shareForm{{#isSingle}} single{{/isSingle}}">
+      <fieldset class="card-content">
+        <h3>Share to Facebook</h3>
+        {{^isSingle}}
+        <div class="card-thumbnails" data-count="{{photoCount}}">
+          <span class="card-thumbnails-count">
+            <strong>{{photoCount}}</strong> Total
+          </span>
+        </div>
+        {{/isSingle}}
+        <div class="formSection">
+          {{#isSingle}}
+            <div class="card-thumbnails" data-count="{{photoCount}}">
+              <span class="card-thumbnails-count">
+                <strong>{{photoCount}}</strong> Total
+              </span>
+            </div>
+          {{/isSingle}}
+          {{#isSingle}}
+          <div class="formField shareForm-photoNeighbor">
+            <label for="share/facebook/caption" class="formField-label">Photo Caption</label>
+            <textarea id="share/facebook/caption"></textarea>
+          </div>
+          {{/isSingle}}
+          {{^isSingle}}
+          <div class="formField">
+            <label for="share/facebook/title" class="formField-label">Album Title</label>
+            <input type="text" id="share/facebook/title" {{#albumTitle}}value="{{albumTitle}}"{{/albumTitle}} data-validation-required>
+          </div>
+          {{/isSingle}}
+
+          <div class="formField card-controls">
+            <input type="submit" value="Share to Facebook" id="share/facebook/submit" class="button" data-value-pending="Sharing&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-share-twitter" type="text/html">
+    <form id="share/twitter" class="card shareForm{{#isSingle}} single{{/isSingle}}">
+      <fieldset class="card-content">
+        <h3>Share to Twitter</h3>
+        {{^isSingle}}
+        <div class="card-thumbnails" data-count="{{photoCount}}">
+          <span class="card-thumbnails-count">
+            <strong>{{photoCount}}</strong> Total
+          </span>
+        </div>
+        {{/isSingle}}
+        <div class="formSection">
+          {{#isSingle}}
+            <div class="card-thumbnails" data-count="{{photoCount}}">
+              <span class="card-thumbnails-count">
+                <strong>{{photoCount}}</strong> Total
+              </span>
+            </div>
+          {{/isSingle}}
+          <div class="formField">
+            <span id="share/twitter/characters">{{maxCharCount}}</span>
+            <label for="share/twitter/tweet" class="formField-label">Tweet</label>
+            <textarea id="share/twitter/tweet" data-validation-maxlength="{{maxCharCount}}">{{tweet}}</textarea>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Share to Twitter" id="share/twitter/submit" class="button" data-value-pending="Sharing&hellip;">
+
+            <div class="card-controls-extra">
+              <input type="checkbox" id="share/twitter/allowDownload"{{#allowDownload}} checked="checked"{{/allowDownload}}>
+              <label for="share/twitter/allowDownload" class="formField-label">
+                Allow downloads
+                <span class="formField-label-info">
+                  <span class="bubble">
+                    Allow people to download full-resolution copies of these photos (with metadata) or copy them to their own Everpix account.
+                  </span>
+                </span>
+              </label>
+            </div
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-share-photomail" type="text/html">
+    <form id="share/photomail" class="card shareForm{{#isSingle}} single{{/isSingle}}" novalidate>
+      <fieldset class="card-content">
+        <h3>Share to Photo Mail</h3>
+        {{^isSingle}}
+        <div class="card-thumbnails" data-count="{{photoCount}}">
+          <span class="card-thumbnails-count">
+            <strong>{{photoCount}}</strong> Total
+          </span>
+        </div>
+        {{/isSingle}}
+        <div class="formSection">
+          {{#isSingle}}
+            <div class="card-thumbnails" data-count="{{photoCount}}">
+              <span class="card-thumbnails-count">
+                <strong>{{photoCount}}</strong> Total
+              </span>
+            </div>
+          {{/isSingle}}
+          <div class="formField">
+            <label for="share/photomail/recipients" class="formField-label">Recipients</label>
+            <input type="email" id="share/photomail/recipients" data-validation-required data-validation-email>
+          </div>
+          <div class="formField">
+            <label for="share/photomail/subject" class="formField-label">Subject</label>
+            <input type="text" id="share/photomail/subject" {{#subject}}value="{{subject}}"{{/subject}} data-validation-required>
+          </div>
+          <div class="formField">
+            <label for="share/photomail/body" class="formField-label">Message</label>
+            <textarea id="share/photomail/body" data-validation-maxlength="32768"></textarea>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Share to Photo Mail" id="share/photomail/submit" class="button" data-value-pending="Sharing&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-share-photopage-select" type="text/html">
+    <div id="select/photopage" class="card shareForm">
+      <div class="card-content">
+        <h3>Share to Photo Page</h3>
+        <div class="photoPage-listItem makeNew" data-id="new">
+          <span class="photoPage-listItem-details">
+            <span class="photoPage-listItem-thumbnail"></span>
+            <span class="photoPage-listItem-title">Make a New Photo Page</span>
+          </span>
+        </div>
+      </div>
+      <div class="photoPages card-loadable">
+        <div class="card-loadable-contents">
+          <ul class="photoPages-list card-content card-scrollable"></ul>
+          <hr>
+          <div class="photoPages-count card-content"></div>
+        </div>
+        <div class="card-loadable-pending">
+          <span class="spinner"></span> Loading
+        </div>
+        <div class="card-loadable-empty">
+          No published photo pages yet.
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-share-photopage" type="text/html">
+    <form id="share/photopage" class="card shareForm{{#isSingle}} single{{/isSingle}}">
+      <fieldset class="card-content">
+        <h3>Share to Photo Page</h3>
+        {{^isSingle}}
+        <div class="card-thumbnails" data-count="{{photoCount}}">
+          <span class="card-thumbnails-count">
+            <strong>{{photoCount}}</strong> Total
+          </span>
+        </div>
+        {{/isSingle}}
+        <div class="formSection">
+          <div class="formField">
+            <label for="share/photopage/title" class="formField-label">Title</label>
+            <input type="text" id="share/photopage/title" {{#title}}value="{{title}}"{{/title}}>
+          </div>
+
+          <div class="formField card-controls">
+            <input type="submit" value="{{#isNew}}Create Page{{/isNew}}{{^isNew}}Update Page{{/isNew}}" id="share/photopage/submit" class="button" data-value-pending="{{#isNew}}Creating{{/isNew}}{{^isNew}}Updating{{/isNew}}&hellip;">
+
+            <div class="card-controls-extra">
+              <input type="checkbox" id="share/photopage/allowDownload"{{#allowDownload}} checked="checked"{{/allowDownload}}>
+              <label for="share/photopage/allowDownload" class="formField-label">
+                Allow downloads
+                <span class="formField-label-info">
+                  <span class="bubble">
+                    Allow people to download full-resolution copies of these photos (with metadata) or copy them to their own Everpix account.
+                  </span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-share-photopage-link" type="text/html">
+    <div id="link/photopage" class="card shareForm">
+      <div class="card-content formSection">
+        <div class="formField">
+          <label for="link/photopage/link" class="formField-label">Photo Page Link</label>
+          <input type="text" id="link/photopage/link" value="{{url}}">
+        </div>
+        <div class="formField card-controls">
+          <a href="{{url}}" class="button graphite" target="_blank">Open in New Window</a>
+          {{#includeUndo}}<span class="card-controls-link photoPage-undo">Undo</span>{{/includeUndo}}
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-share-path" type="text/html">
+    <form id="share/path" class="card shareForm{{#isSingle}} single{{/isSingle}}">
+      <fieldset class="card-content">
+        <h3>Share to Photo Page</h3>
+        {{^isSingle}}
+        <div class="card-thumbnails" data-count="{{photoCount}}">
+          <span class="card-thumbnails-count">
+            <strong>{{photoCount}}</strong> Total
+          </span>
+        </div>
+        {{/isSingle}}
+        <div class="formSection">
+          {{#isSingle}}
+            <div class="card-thumbnails" data-count="{{photoCount}}">
+              <span class="card-thumbnails-count">
+                <strong>{{photoCount}}</strong> Total
+              </span>
+            </div>
+          {{/isSingle}}
+          {{#hasFriends}}
+          <div class="formField">
+            <label for="share/path/friends" class="formField-label" data-hint="(optional)">Tag Friends</label>
+            <input type="text" id="share/path/friends">
+          </div>
+          {{/hasFriends}}
+          <div class="formField">
+            <label for="share/path/caption" class="formField-label">Photo Caption</label>
+            <textarea id="share/path/caption"></textarea>
+          </div>
+        </div>
+        <div class="card-controls">
+          <input type="submit" value="Share to Path" id="share/path/submit" class="button" data-value-pending="Sharing&hellip;">
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-autoCompleter" type="text/html">
+    <div class="autoComplete">
+      <ul class="autoComplete-list">
+        {{#haystack}}
+          <li class="autoComplete-item" data-value="{{.}}">{{.}}</li>
+        {{/haystack}}
+      </ul>
+    </div>
+  </script>
+
+  <script id="template-upload-file" type="text/html">
+    <li class="upload-file" data-status="pending">
+      <span class="upload-file-status" data-status="pending">Pending...</span>
+      <span class="upload-file-status" data-status="complete">Done!</span>
+      <span class="upload-file-status" data-status="error">Error</span>
+      <span class="upload-file-name">{{name}}</span>
+    </li>
+  </script>
+
+  <script src="assets/js/ui.js"></script>
+
+  <script src="assets/js/page.index.js"></script>
+</body>
+</html>

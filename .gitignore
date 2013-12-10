@@ -1,0 +1,5 @@
+Gemfile.lock
+public/store
+test_db*
+thumbs
+db

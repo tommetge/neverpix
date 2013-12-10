@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!-- © 2011-2013 33cube, Inc. All rights reserved. -->
+<!--[if lte IE 7 ]> <html lang="en" class="no-js oldie"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Welcome to Everpix - Sign In or Sign Up</title>
+  <meta name="description" content="Snap all the photos you want and spend more time enjoying them. Discover what you have and share what you love.">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-itunes-app" content="app-id=480052550">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" sizes="16x16" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/favicon_16.png">
+  <link rel="icon" sizes="196x196" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/android_196.png">
+  <link rel="icon" sizes="32x32" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/favicon_32.png">
+
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/ios_152.png">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/ios_120.png">
+
+  <meta name="msapplication-TileColor" content="#e57300">
+  <meta name="msapplication-TileImage" content="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/win8.png">
+
+  <meta property="og:image" content="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/facebook.png"/>
+
+  <!-- Libraries -->
+  <script src="assets/js/libs/jquery-1.9.1.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/libs/jquery-1.9.1.min.js"><\/script>')</script>
+  <script src="assets/js/libs/libs.min.js"></script>
+  <script src="assets/js/libs/plugins.min.js"></script>
+
+  <!-- HTML5 elements for IE8 -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript">
+    document.createElement('hgroup');
+    document.createElement('header');
+    document.createElement('nav');
+    document.createElement('section');
+    document.createElement('footer');
+    document.createElement('figure');
+    document.createElement('figcaption');
+  </script>
+  <![endif]-->
+
+  <script src="assets/js/global.js"></script>
+
+  <script src="assets/js/app.js"></script>
+
+  <link rel="stylesheet" href="assets/css/common.css">
+
+  <link rel="stylesheet" href="assets/css/page.landing.css">
+
+</head>
+<body>
+  <div id="messageBars"></div>
+  <header id="header">
+    <div class="section-content">
+      <h1 class="header-logo">Everpix</h1>
+      <ul class="header-nav">
+        <li class="header-link">
+          <a href="#sign-in">Sign in</a>
+        </li>
+      </ul>
+      <form id="sign-in" novalidate>
+        <a href="#" class="sign-in-close">Close</a>
+        <fieldset>
+          <div class="formField">
+            <input type="email" id="sign-in/email" data-validation-required data-validation-email placeholder="Email address">
+          </div>
+          <div class="formField">
+            <input type="password" id="sign-in/password" data-validation-required placeholder="Password">
+          </div>
+          <div class="formField">
+            <input type="submit" id="sign-in/submit" value="Sign In" class="button orange">
+          </div>
+        </fieldset>
+        <label class="sign-in-remember" for="sign-in/remember">
+          <input type="checkbox" id="sign-in/remember" />
+          Keep me signed in
+        </label>
+        <a href="#reset-password" class="sign-in-forgot">Forgot password?</a>
+      </form>
+
+      <form id="reset-password" novalidate>
+        <a href="#sign-in" class="reset-password-close">Close</a>
+        <p class="reset-password-message">Enter your email and we'll send you a link to reset your password.</p>
+        <fieldset>
+          <div class="formField">
+            <input type="email" id="reset-password/email" data-validation-required data-validation-email placeholder="Email address">
+          </div>
+          <div class="formField">
+            <input type="submit" id="reset-password/submit" value="Send" class="button orange">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </header>
+
+  <section id="intro">
+    <div class="section-content">
+      <div class="intro-column">
+        <h2 class="intro-title">
+          <!-- The smart photo platform that organizes your pictures for you. -->
+          Your photo mess, solved.
+        </h2>
+        <p class="intro-description">
+          Enjoy your life photo collection effortlessly
+          &mdash;everything in one place, automatically
+          organized, and ready to be rediscovered
+        </p>
+        <!--<span class="intro-available">
+          Available for Mac, Windows, iOS, and Android
+        </span>-->
+
+        <a id="intro/play" href="#video">Play</a>
+
+        <!--<form id="invite" novalidate>
+          <fieldset class="formSection">
+            <div class="formField">
+              <input type="email" id="invite/email" data-validation-required data-validation-email placeholder="Email address">
+            </div>
+            <div class="formField">
+              <input type="submit" id="invite/submit" value="Try It for Free" class="button chunky">
+              <div class="form-errors"></div>
+            </div>
+          </fieldset>
+        </form>-->
+
+        <div id="sadTimes">
+          <button class="button chunky disabled">Sign up disabled</button>
+          <p>Everpix is shutting down. <a href="#adieu">Read more</a></p>
+        </div>
+
+        <a id="appDownload" class="button chunky">Download the App</a>
+      </div>
+
+      <div class="intro-cameras">
+        <span class="intro-camera" data-camera="instant">
+          <span class="intro-camera-device"></span>
+          <span class="intro-camera-shadow"></span>
+        </span>
+        <span class="intro-camera" data-camera="dslr">
+          <span class="intro-camera-device"></span>
+          <span class="intro-camera-shadow"></span>
+        </span>
+        <span class="intro-camera" data-camera="compact">
+          <span class="intro-camera-device"></span>
+          <span class="intro-camera-shadow"></span>
+        </span>
+        <span class="intro-camera" data-camera="smartphone">
+          <span class="intro-camera-device"></span>
+          <span class="intro-camera-shadow"></span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section id="primary-features">
+    <div class="section-content">
+      <div class="features">
+        <div class="feature" id="primary-features/unlimited">
+          <h3>Unlimited</h3>
+          <p>Terabytes, begone. There's no limit to how many photos you can upload here. Set Everpix up once and your pictures will know where to go.</p>
+        </div>
+        <div class="feature" id="primary-features/science">
+          <h3>Science</h3>
+          <p>Take photo organization off your to-do list. We’re developing image analysis technology that understands your photos and helps you manage your collection.</p>
+        </div>
+        <div class="feature" id="primary-features/exploration">
+          <h3>Exploration</h3>
+          <p>We're building new ways for you to enjoy and rediscover your pictures. Explore them by content or moment, or look back on what you captured a year ago today.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="press">
+    <div class="section-content">
+      <div class="press-quotes">
+
+        <blockquote class="press-quote selected" cite="http://www.theverge.com/2013/8/29/4560364/best-cloud-storage-photo-apps">
+          "Everpix [&hellip;] earned <em>top marks for its design</em>, ease of use, and emphasis on helping you actually <em>enjoy all the photos</em> you've taken."
+          <a href="http://www.theverge.com/2013/8/29/4560364/best-cloud-storage-photo-apps" class="press-quote-source" target="_blank">The Verge</a>
+        </blockquote>
+
+        <blockquote class="press-quote" cite="https://twitter.com/aezell/status/372395632897822721">
+          "If you are a parent, <em>Everpix is worth the price</em> for the Flashback feature alone."
+          <a href="https://twitter.com/aezell/status/372395632897822721" class="press-quote-source" target="_blank">@aezell</a>
+        </blockquote>
+
+        <blockquote class="press-quote" cite="http://www.tuaw.com/2013/06/27/everpix-2-0-re-designed-improves-navigation-greatly/">
+          "I recently uploaded <em>over 10K photos</em> to Everpix (making me the "average" user) and Flashback has been great. I'm looking at photos that are over a decade old <em>for the first time in a long time.</em>"
+          <a href="http://www.tuaw.com/2013/06/27/everpix-2-0-re-designed-improves-navigation-greatly/" class="press-quote-source" target="_blank">TUAW</a>
+        </blockquote>
+
+        <blockquote class="press-quote" cite="https://twitter.com/chrismair/status/291535267288981504">
+          "Quite possibly the <em>most fun</em> I've had with a photo site. Uploaded <em>15 years of photos</em> and finding gems."
+          <a href="https://twitter.com/krimple/status/351462553785876480" class="press-quote-source" target="_blank">@krimple</a>
+        </blockquote>
+
+        <blockquote class="press-quote" cite="http://venturebeat.com/2013/06/27/everpix-2-0-photo-highlights/">
+          "After initially making headlines for its ability to store all of your photos in the cloud, Everpix's true goal ended up being far more interesting: It wants you to <em>love your photos again</em>."
+          <a href="http://venturebeat.com/2013/06/27/everpix-2-0-photo-highlights/" class="press-quote-source" target="_blank">VentureBeat</a>
+        </blockquote>
+
+        <blockquote class="press-quote" cite="https://twitter.com/bobearth/status/305833213635481600">
+          "My <em>30,000 photo library</em> uploaded to Everpix in just three days. I’ve been scrolling through albums of <em>15 year old photos</em> on my phone."
+          <a href="https://twitter.com/bobearth/status/305833213635481600" class="press-quote-source" target="_blank">@bobearth</a>
+        </blockquote>
+
+        <blockquote class="press-quote" cite="http://gizmodo.com/5988608/everpixs-image-analysis-will-find-all-of-your-cat-photos-automatically-eventually">
+          "&hellip;what's different is Everpix's <em>speedy interface</em>. Browsing my personal collection of thousands of photos taken over the last eight years is <em>so fast and easy</em> that it makes [a well-known photo site] just feel dumb."
+          <a href="http://gizmodo.com/5988608/everpixs-image-analysis-will-find-all-of-your-cat-photos-automatically-eventually" class="press-quote-source" target="_blank">Gizmodo</a>
+        </blockquote>
+
+        <blockquote class="press-quote">
+          "I blew my mom away this weekend when [&hellip;] I was able to pull up a 20-year-old photo <em>from my iphone</em> in all of 7 seconds.  That's <em>pretty darn amazing</em>."
+          <span class="press-quote-source">Steven, customer</span>
+        </blockquote>
+
+        <blockquote class="press-quote" cite="http://techcrunch.com/2013/03/08/hands-on-with-everpix-1-5-the-app-that-lets-you-explore-your-best-photos-and-print-them-too/">
+          "Everpix has built <em>a full-service platform</em> that encompasses nearly all of your disconnected photo-sharing and storing apps and puts your snapshots in one <em>sleekly-designed</em> place stored in the cloud for easy sorting and viewing."
+          <a href="http://techcrunch.com/2013/03/08/hands-on-with-everpix-1-5-the-app-that-lets-you-explore-your-best-photos-and-print-them-too/" class="press-quote-source" target="_blank">TechCrunch</a>
+        </blockquote>
+
+        <blockquote class="press-quote">
+          "It has got me <em>delving into all sorts of old pics</em> and events and emailing them to loved ones. Like a <em>photo treasure trove</em> opened up."
+          <span class="press-quote-source">App Store review</span>
+        </blockquote>
+
+      </div>
+      <ul class="press-links">
+        <li class="press-link" data-publisher="gizmodo">
+          <a href="http://gizmodo.com/5988608/everpixs-image-analysis-will-find-all-of-your-cat-photos-automatically-eventually" target="_blank">Gizmodo</a>
+        </li>
+        <li class="press-link" data-publisher="techcrunch">
+          <a href="http://techcrunch.com/2013/06/27/its-time-for-the-concept-of-photo-albums-to-die-everpix-debuts-what-comes-next/" target="_blank">TechCrunch</a>
+        </li>
+        <li class="press-link" data-publisher="mit-tech-review">
+          <a href="http://www.technologyreview.com/news/512251/a-photo-service-that-understands-the-contents-of-your-images/" target="_blank">MIT Technology Review</a>
+        </li>
+        <li class="press-link" data-publisher="the-verge">
+          <a href="http://www.theverge.com/2013/8/29/4560364/best-cloud-storage-photo-apps" target="_blank">CNET</a>
+        </li>
+        <li class="press-link" data-publisher="tuaw">
+          <a href="http://www.tuaw.com/2013/06/27/everpix-2-0-re-designed-improves-navigation-greatly/" target="_blank">TUAW</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="everywhere">
+    <div class="section-content">
+      <h3>Enjoy your photos everywhere.</h3>
+      <ul class="devices">
+        <li class="device" data-type="web">Web</li>
+        <li class="device" data-type="iphone">iPhone</li>
+        <li class="device" data-type="ipad">iPad</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="secondary-features">
+    <div class="section-content">
+      <div class="features">
+        <div class="feature" id="secondary-features/syncing">
+          <h4>Fast Syncing</h4>
+          <p>When you sync a photo to Everpix, we make a <strong>full-res copy</strong> of the original. Then we run that copy through our proprietary image optimization process. It keeps Everpix nimble, without compromising quality.</p>
+        </div>
+        <div class="feature" id="secondary-features/duplicates">
+          <h4>No Duplicates</h4>
+          <p>However you sync your photos, we'll get rid of duplicates for you&mdash;even if they come from different places or are different sizes. And you can always view the original source (e.g. Instagram) of each photo.</p>
+        </div>
+        <div class="feature" id="secondary-features/privacy">
+          <h4>Privacy First</h4>
+          <p>Everpix photos are private by default. They remain that way unless you decide to share them. Memories are important. We respect that, and we'll make sure you always have control over your pictures.</p>
+        </div>
+        <div class="feature" id="secondary-features/secure">
+          <h4>Safe &amp; Secure</h4>
+          <p>All of our server communications&mdash;including the uploading and viewing of your photos&mdash;are encrypted over HTTPS during transmission. This keeps your images and information safe, and protects them from eavesdropping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="section-content">
+      <ul class="footer-links">
+        <li><a target="_blank" href="http://press.everpix.com/bios">About</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a target="_blank" href="legal/terms.html">Terms</a></li>
+        <li><a target="_blank" href="legal/privacy.html">Privacy</a></li>
+        <li><a target="_blank" href="http://blog.everpix.com">Blog</a></li>
+        <li><a target="_blank" href="http://press.everpix.com">Press</a></li>
+        <li><a target="_blank" href="https://support.everpix.com/">Help</a></li>
+      </ul>
+      <p class="footer-copyright" title="Version 27704 deployed on 2013-11-14 at 08:44:46 GMT">
+        &copy; 2011-2013 33cube, Inc. The EVERPIX&trade; trademark is owned by 33cube, Inc. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <div id="adieu">
+    <article>
+      <h2>We gave it our all&hellip;</h2>
+      <p>It is with a heavy heart we announce that Everpix will be shutting down in the coming weeks.</p>
+      <p>We started this company two years ago with the goals of solving the photo mess and designing better ways for people to enjoy their memories. We are very proud of the work we’ve done&mdash;from the cutting-edge semantic analysis and syncing technology, right down to every pixel on our website and mobile apps.</p>
+      <p>We are grateful to our investors for giving us the opportunity to grow this project. But more importantly, we are so very thankful to the folks who supported us with subscriptions and feedback. You guys are the best.</p>
+      <p>It's frustrating (to say the least) that we cannot continue to work on Everpix. We were unable to secure sufficient funding in order to properly scale the business, and our endeavors to find a new home for Everpix did not come to pass. At this point, we have no other options but to discontinue the service.</p>
+      <p>We will email everyone soon in regards to refunds and exporting photos from Everpix&mdash;your memories are very important to us, and you can rest assured everyone on the team is working hard to ensure a simple and painless process.</p>
+      <p>Please read <a href="https://support.everpix.com/entries/22586374" target="_blank">this document</a> which explains the situation in more detail. Please don’t hesitate to reach out with questions or thoughts. Email us at <a href="mailto:feedback@everpix.com">feedback@everpix.com</a> or tweet <a href="http://twitter.com/everpix" target="_blank">@everpix</a>.</p>
+      <p>Thank you, again. We'll miss you.</p>
+      <p>The Everpix Team</p>
+    </article>
+    <hr/>
+    <footer>
+      <h2>Key Points</h2>
+      <ul class="card-list">
+        <li>Everpix has switched to read-only mode and will continue to operate until December 15th, 2013.</li>
+        <li>Your data is safe, and we <strong>will not</strong> sell or transfer any of your photos or personal information to anyone else, period.</li>
+        <li>We will email instructions to all Everpix users on how to download their photos.</li>
+        <li>We will refund every subscriber. This process will take some time and we will email everyone in the next few weeks with more information.</li>
+        <li>Thank you everyone. We will miss you.</li>
+        <li>Please read the <a href="https://support.everpix.com/entries/22586374" target="_blank">FAQ</a> for more details.</li>
+      </ul>
+    </footer>
+  </div>
+
+  <div id="pricing" class="card">
+    <div id="pricing/free" class="pricing-tier">
+      <h2 class="pricing-tier-header">Free</h2>
+      <ul class="pricing-tier-prices">
+        <li class="pricing-option">
+          <span class="pricing-option-price">
+            <sup class="pricing-option-currencySign">$</sup>0
+          </span>
+          <span class="pricing-option-additional">No credit card required</span>
+        </li>
+      </ul>
+      <div class="pricing-tier-details">
+        <div class="pricing-tier-details-text">
+          All your photos from the<br/>
+          <strong>past 12 months</strong>
+        </div>
+        <span class="pricing-tier-learnMore">
+          <span class="bubble">
+            <strong>Everpix Free</strong> keeps all your photos from the past 12 months. It's not just the last 1,000 shots or a couple gigabytes&mdash;instead ALL the photos you took within the last year are synced to the cloud. Those memories are with you, anytime, anywhere.
+          </span>
+        </span>
+      </div>
+    </div>
+    <div id="pricing/subscription" class="pricing-tier">
+      <h2 class="pricing-tier-header">Subscription</h2>
+      <ul class="pricing-tier-prices">
+        <li class="pricing-option">
+          <span class="pricing-option-price">
+            <sup class="pricing-option-currencySign">$</sup>4<span class="pricing-option-decimal">.</span><sup class="pricing-option-cents">99</sup>
+          </span>
+          <span class="pricing-option-period">a month</span>
+        </li>
+        <li class="pricing-option">
+          <span class="pricing-option-price">
+            <sup class="pricing-option-currencySign">$</sup>49
+          </span>
+          <span class="pricing-option-period">a year</span>
+        </li>
+      </ul>
+      <div class="pricing-tier-details">
+        <div class="pricing-tier-details-text">
+          All your photos<span class="pricing-tier-details-disclaimer">*
+            <span class="bubble">
+              Everpix reserves the right to limit excessive use and the unlimited photos offer pertains to your personal, non-commercial use only.
+            </span>
+          </span> from the<br/>
+          <strong>beginning of time</strong>
+        </div>
+      </div>
+      <div class="pricing-callout">
+        <span class="pricing-callout-text">
+          Save <strong>18%</strong>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div id="video"></div>
+
+  <div id="unsupported" class="card">
+    <div class="card-content">
+      <h3>Sorry, your browser is not supported.</h3>
+      <p>Everpix requires a <a href="http://help.everpix.com/web.html?page=browsers" target="_blank">modern browser</a> to function properly. Please upgrade your browser (we recommend Google Chrome) and come back.</p>
+      <a href="http://google.com/chrome" class="button" target="_blank">Get Google Chrome</a>
+    </div>
+  </div>
+
+  <!-- Mustache templates -->
+  <script id="template-messageBar" type="text/html">
+    <div class="messageBar{{#extraClasses}} {{extraClasses}}{{/extraClasses}}">
+      <div class="messageBar-contents"></div>
+      {{#closeButton}}<span class="messageBar-closeButton">Close</span>{{/closeButton}}
+    </div>
+  </script>
+
+  <script id="template-invite-done" type="text/html">
+    <div id="invite/done" class="hidden">
+    {{#time}}
+      <h4 class="invite-done-title">You're on the list!</h4>
+      <p class="invite-done-sub">
+        Everpix is handling a lot of sign-ups right now, but we'll send you an email with a link to get started in about <strong>{{time}}</strong>.
+      </p>
+    {{/time}}
+    {{^time}}
+      <h4 class="invite-done-title">Check your inbox!</h4>
+      <p class="invite-done-sub">
+        We'll send you an email with a link to get started. Be sure to check your spam folder if you don't see an email shortly.
+      </p>
+    {{/time}}
+    </div>
+  </script>
+
+  <script id="template-video-embed" type="text/html">
+    <iframe src="//player.vimeo.com/video/65915162?autoplay=1&amp;api=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+  </script>
+
+  <script id="template-video-native" type="text/html">
+    <video controls autoplay>
+      <source src="//player.vimeo.com/external/65915162.mobile.mp4?s=401a5a8ab246738d54dea69d14e375a9" type="video/mp4" />
+    </video>
+  </script>
+
+  <script src="assets/js/ui.js"></script>
+
+  <script src="assets/js/page.landing.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+There are still some bits of the Everpix API that are un-implemented.
+I'll try and document those here before the shutdown on 2013-12-11.
+
+Albums:
+
+GET /v2/album_list?_ajax=1&order=asc&limit=300&year=2012&_authtoken=fakeAuthToken
+
+{
+  "cursor": null,
+  "_statusCode": 200,
+  "albums": [{
+    "sourceType": "mac-folder",
+    "modifiedTime": 0.0,
+    "sourceName": "A Space Odyssey",
+    "maxDate": 0.0,
+    "visibility": 1,
+    "photoSetVersion": 148192,
+    "keyPhotos": [{
+      "poiX": 0.5,
+      "poiY": 0.5,
+      "timestamp": 0.0,
+      "pid": "pid",
+      "visibility": 1,
+      "height": 26,
+      "width": 38,
+      "timestampType": "exif-original",
+      "year": 2001,
+      "tid": "pid"
+    }],
+    "year": 2001,
+    "sourceUUID": "uuid",
+    "minDate": 0.0,
+    "photoCount": 0,
+    "albumUUID": "auuid",
+    "albumName": "Name",
+    "timestamp": 0.0,
+    "aid": "aid"
+  }]
+}

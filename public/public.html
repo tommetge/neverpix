@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- © 2011-2013 33cube, Inc. All rights reserved. -->
+<!--[if lte IE 7 ]> <html lang="en" class="no-js oldie"> <![endif]-->
+<!--[if IE 8 ]> <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Everpix</title>
+  <meta name="description" content="Snap all the photos you want and spend more time enjoying them. Discover what you have and share what you love.">
+  <meta property="og:image" content="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/common/facebook_icon.png"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+  <link rel="icon" sizes="16x16" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/favicon_16.png">
+  <link rel="icon" sizes="196x196" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/android_196.png">
+  <link rel="icon" sizes="32x32" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/favicon_32.png">
+
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/ios_152.png">
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/ios_120.png">
+
+  <meta name="msapplication-TileColor" content="#e57300">
+  <meta name="msapplication-TileImage" content="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/win8.png">
+
+  <meta property="og:image" content="https://d2pka638f2qxxl.cloudfront.net/27704/assets/images/icons/facebook.png"/>
+
+  <!-- Libraries -->
+  <script src="assets/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="assets/js/libs/libs.min.js"></script>
+  <script src="assets/js/libs/plugins.min.js"></script>
+
+  <script src="assets/js/global.js"></script>
+
+  <script src="assets/js/app.js"></script>
+
+  <link rel="stylesheet" href="assets/css/common.css">
+
+  <link rel="stylesheet" href="assets/css/page.public.css">
+</head>
+<body>
+
+  <!-- Main content container -->
+  <div id="main">
+    <div id="top-left">
+      <h1 id="logo"><a href="landing.html" target="_blank">Everpix</a></h1>
+      <span id="whazzat">
+        <span class="bubble inverted">
+          <strong>Ready to take the chore of photo management off your list?</strong>
+          Everpix does the hard work for you. Snap and share all the photos you want and spend more time enjoying them.
+        </span>
+      </span>
+    </div>
+    <div id="top-right">
+      <a id="tryIt" href="landing.html?action=invite&amp;origin=photo-page" class="button" target="_blank">Try For Free</a>
+      <button id="downloadButton" class="hidden">Download</button>
+
+      <ul id="downloadMenu" class="bubble bubbleMenu inverted">
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button noIcon" data-function="download">Download</span>
+        </li>
+        <li class="bubbleMenu-group">
+          <span class="bubbleMenu-button noIcon" data-function="copyToCollection">Copy to Everpix</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Panels and Popovers -->
+  <div id="blockingActivity" class="activity">
+    <div class="activity-indicator">
+      <span class="spinner"></span>
+      <span class="message"></span>
+    </div>
+  </div>
+
+  <div id="discreetActivity" class="activity">
+    <div class="activity-indicator">
+      <span class="spinner"></span>
+    </div>
+  </div>
+
+  <div id="photoViewer" data-features="{{featuresString}}">
+    <div class="photoViewer-photos">
+      <button class="photoViewer-prev">Previous</button>
+      <button class="photoViewer-next">Next</button>
+
+      <div id="photoViewer-activity" class="activity">
+        <span class="spinner"></span>
+      </div>
+
+      <div class="photoHolder"></div>
+
+      <div class="photoViewer-actionAlerts"></div>
+    </div>
+
+    <div class="photoViewer-topBars">
+      <div class="photoViewer-topBars-left">
+        <button class="photoViewer-close photoViewer-button" title="Close">Close</button>
+      </div>
+
+      <div class="photoViewer-topBars-right">
+        <button class="photoViewer-download photoViewer-button" title="Download Photo">Download</button>
+      </div>
+
+      <div class="photoViewer-messageBars"></div>
+    </div>
+  </div>
+
+  <!-- Mustache templates -->
+  <script id="template-messageBar" type="text/html">
+    <div class="messageBar{{#extraClasses}} {{extraClasses}}{{/extraClasses}}">
+      <div class="messageBar-contents"></div>
+      {{#closeButton}}<span class="messageBar-closeButton">Close</span>{{/closeButton}}
+    </div>
+  </script>
+
+  <script id="template-view" type="text/html">
+    <div class="view{{#extraClasses}} {{extraClasses}}{{/extraClasses}}" id="{{id}}">
+      <div class="view-contents">
+        {{#hasGrids}}<div class="view-grids"></div>{{/hasGrids}}
+      </div>
+    </div>
+  </script>
+
+  <script id="template-grid" type="text/html">
+    <div class="grid{{#extraClasses}} {{extraClasses}}{{/extraClasses}}">
+      {{#title}}<h3 class="grid-title"><span>{{title}}</span></h3>{{/title}}
+      <div class="grid-contents"></div>
+    </div>
+  </script>
+
+  <script id="template-footer" type="text/html">
+    <div class="footer">
+      <p class="footer-legal">
+        <span class="footer-copyright" title="Version 27704 deployed on 2013-11-14 at 08:44:46 GMT">33cube, Inc. &copy; 2011-2013.</span>
+        <span class="footer-trademark">The EVERPIX&trade; trademark is owned by 33cube, Inc. All rights reserved.</span>
+      </p>
+      <ul class="footer-links">
+        <li class="footer-link" data-icon="help">
+          <a href="mailto:support@everpix.com" target="_blank" title="Help">Help</a>
+        </li>
+        <li class="footer-link" data-icon="twitter">
+          <a href="http://twitter.com/everpix" target="_blank" title="Twitter">Twitter</a>
+        </li>
+        <li class="footer-link" data-icon="blog">
+          <a href="http://blog.everpix.com" target="_blank" title="Blog">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </script>
+
+  <script id="template-title" type="text/html">
+    <h2 id="title" title="{{{title}}}{{#userName}} - Shared by {{userName}}" class="sharedBy{{/userName}}">
+      {{{title}}}
+      {{#userName}}<span class="title-userName">Shared by {{userName}}</span>{{/userName}}
+    </h2>
+  </script>
+
+  <script id="template-group" type="text/html">
+    <div class="context view selected">
+      <div class="context-contents view-contents">
+        <div class="grid photoGrid"></div>
+      </div>
+      <div class="footer">
+        <p class="footer-legal">
+          <span class="footer-copyright" title="Version 27704 deployed on 2013-11-14 at 08:44:46 GMT">&copy; 2013 33cube, Inc.</span>
+          <span class="footer-trademark">The EVERPIX&trade; trademark is owned by 33cube, Inc.</span>
+        </p>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-photoPreview" type="text/html">
+    <div class="photoPreview{{#extraClasses}} {{extraClasses}}{{/extraClasses}}{{#isDropCap}} dropCap{{/isDropCap}}" data-size="{{size}}" data-photo-id="{{photoID}}">
+      <div class="photoPreview-frame">
+        <span class="photoPreview-thumbnail"></span>
+      </div>
+    </div>
+  </script>
+
+  <script id="template-singlePhotoPreview" type="text/html">
+    <img class="photoPreview singlePhoto" data-size="{{size}}" data-photo-id="{{photoID}}"/>
+  </script>
+
+  <script id="template-saveToCollection" type="text/html">
+    <form id="saveToCollection" class="card shareForm" data-state="existing" novalidate>
+      <fieldset class="card-content">
+        <h3>Copy to My Everpix Collection</h3>
+        <p data-state="existing">You will receive a copy of {{#isPlural}}these photos{{/isPlural}}{{^isPlural}}this photo{{/isPlural}} <strong>as a Photo Mail</strong> in your Everpix account.</p>
+        <p data-state="new">We'll send you a confirmation email, and {{#isPlural}}these photos{{/isPlural}}{{^isPlural}}this photo{{/isPlural}} will appear in your Everpix collection after you've activated your account.</p>
+
+        <div class="card-thumbnails" data-count="{{photoCount}}">
+          <span class="card-thumbnails-count">
+            <strong>{{photoCount}}</strong> Total
+          </span>
+        </div>
+
+        <div class="formSection">
+          <div class="formField half" data-state="existing">
+            <label for="saveToCollection/existing/email" class="formField-label">Email</label>
+            <input type="email" id="saveToCollection/existing/email" data-validation-requiredforstate="existing" data-validation-email{{#email}} value="{{email}}"{{/email}}>
+          </div>
+          <div class="formField half" data-state="existing">
+            <label for="saveToCollection/existing/password" class="formField-label">Password</label>
+            <input type="password" id="saveToCollection/existing/password" data-validation-requiredforstate="existing">
+          </div>
+          <div class="formField" data-state="new">
+            <label for="saveToCollection/new/email" class="formField-label">Email</label>
+            <input type="email" id="saveToCollection/new/email" data-validation-requiredforstate="new" data-validation-email{{#email}} value="{{email}}"{{/email}}>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Copy" id="saveToCollection/submit" class="button" data-state="existing" data-value-pending="Copying&hellip;">
+            <input type="submit" value="Create Account" id="saveToCollection/submit" class="button" data-state="new" data-value-pending="Creating&hellip;">
+          </div>
+        </div>
+      </fieldset>
+      <span class="saveToCollection-switch" data-state="existing" data-stateTo="new">Create an account</span>
+      <span class="saveToCollection-switch" data-state="new" data-stateTo="existing">Sign In</span>
+    </form>
+  </script>
+
+  <script id="template-download" type="text/html">
+    <form id="download" class="card shareForm" novalidate>
+      <fieldset class="card-content">
+        <h3>Download Photo{{#isPlural}}s{{/isPlural}}</h3>
+        <p>You will receive a <strong>download link via email</strong> when {{#isPlural}}these photos are{{/isPlural}}{{^isPlural}}this photo is{{/isPlural}} packaged and ready.</p>
+
+        <div class="card-thumbnails" data-count="{{photoCount}}">
+          <span class="card-thumbnails-count">
+            <strong>{{photoCount}}</strong> Total
+          </span>
+        </div>
+
+        <div class="formSection">
+          <div class="formField">
+            <label for="download/email" class="formField-label">Email</label>
+            <input type="email" id="download/email" data-validation-required data-validation-email{{#email}} value="{{email}}"{{/email}}>
+          </div>
+          <div class="formField card-controls">
+            <input type="submit" value="Request" id="download/submit" class="button" data-value-pending="Requesting&hellip;">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </script>
+
+  <script id="template-noPhotos" type="text/html">
+    <div class="noDice">
+      <h3 class="noDice-title">Uh oh! The photos you're looking for cannot be found.</h3>
+      <p class="noDice-subtitle">The photos might no longer be public, or this link might be invalid.</p>
+    </div>
+  </script>
+
+  <script id="template-offline" type="text/html">
+    <div class="noDice">
+      <h3 class="noDice-title">Uh oh! Everpix seems to be having trouble.</h3>
+      <p class="noDice-subtitle">Please come back later</p>
+    </div>
+  </script>
+
+  <script id="template-unsupported" type="text/html">
+    <div class="noDice">
+      <h3 class="noDice-title">Sorry, your browser is not supported.</h3>
+      <p class="noDice-subtitle">
+        Everpix requires a modern browser to function properly.<br/>
+        Please upgrade your browser (we recommend Google Chrome)<br/>
+        and come back.
+      </p>
+      <a href="http://google.com/chrome" class="button orange" target="_blank">Get Google Chrome</a>
+    </div>
+  </script>
+
+  <script src="assets/js/ui.js"></script>
+
+  <script src="assets/js/page.public.js"></script>
+</body>
