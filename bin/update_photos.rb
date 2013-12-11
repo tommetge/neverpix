@@ -53,6 +53,10 @@ photo_index.index.each do |timestamp|
   end
 end
 
+if !current_event.empty?
+  events << current_event
+end
+
 events.each do |event|
   pids = []
   event.each do |timestamp|

@@ -50,30 +50,14 @@ class EventIndex < TimestampIndex
 end
 
 $times = {
-  0 => "night",
-  1 => "night",
-  2 => "late_night",
-  3 => "late_night",
-  4 => "late_night", 
-  5 => "early_morning",
-  6 => "early_morning",
-  7 => "early_morning",
-  8 => "morning",
-  9 => "morning",
-  10 => "morning",
-  11 => "midday",
-  12 => "midday",
-  13 => "midday",
-  14 => "afternoon",
-  15 => "afternoon",
-  16 => "afternoon",
-  17 => "early_evening",
-  18 => "early_evening",
-  19 => "early_evening",
-  20 => "evening",
-  21 => "evening",
-  22 => "evening",
-  23 => "night",
+  23 => "night",         0  => "night",         1  => "night",
+  2  => "late_night",    3  => "late_night",    4  => "late_night", 
+  5  => "early_morning", 6  => "early_morning", 7  => "early_morning",
+  8  => "morning",       9  => "morning",       10 => "morning",
+  11 => "midday",        12 => "midday",        13 => "midday",
+  14 => "afternoon",     15 => "afternoon",     16 => "afternoon",
+  17 => "early_evening", 18 => "early_evening", 19 => "early_evening",
+  20 => "evening",       21 => "evening",       22 => "evening"
 }
 
 class Event
