@@ -25,9 +25,9 @@ class User
       batch.put(User.primary_user_key, _uid)
       batch.put(User.key(_uid), {
         "created_at" => Time.now.to_i,
-        "email" => email,
+        "email"      => email,
         "first_name" => first_name,
-        "last_name" => last_name
+        "last_name"  => last_name
       }.to_msgpack)
     end
 

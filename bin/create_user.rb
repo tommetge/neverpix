@@ -4,10 +4,7 @@
 #
 # Usage: create_user.rb first_name last_name email_address
 #
-# Use this script to populate and update your photos database.
-# It will non-recursively scan the folder you pass it for all
-# JPG images and add them to your database as well as generate
-# or update "Events" or "Moments" for the photos added.
+# Use this script to create a user for your Neverpix instance.
 #
 # Note: this must be run while the server is SHUT DOWN!
 
@@ -25,8 +22,8 @@ if current_user
 end
 
 first_name = ARGV[0]
-last_name = ARGV[1]
-email = ARGV[2]
+last_name  = ARGV[1]
+email      = ARGV[2]
 
 if !first_name || !last_name || !email
   puts "Usage: create_user.rb [first name] [last name] [email address]"

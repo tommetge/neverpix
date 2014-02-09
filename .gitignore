@@ -3,3 +3,5 @@ public/store
 test_db*
 thumbs
 db
+.DS_Store
+.bundle

@@ -64,12 +64,12 @@ events.each do |event|
   end
 
   Event.create_from_params(db, {
-    :minDate => event.first,
-    :maxDate => event.last,
-    :timestamp => event.first,
-    :timeOfDay => Event.timeOfDay(event.first),
+    :minDate    => event.first,
+    :maxDate    => event.last,
+    :timestamp  => event.first,
+    :timeOfDay  => Event.timeOfDay(event.first),
     :visibility => 1,
-    :pids => pids
+    :pids       => pids
   })
 end
 

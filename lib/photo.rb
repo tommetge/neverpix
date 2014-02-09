@@ -7,6 +7,7 @@ require 'tempfile'
 require 'securerandom'
 require 'digest/sha1'
 require 'msgpack'
+require 'socket'
 
 require_relative 'index'
 
@@ -122,44 +123,49 @@ class Photo
       exif = EXIFR::JPEG.new(path)
 
       hash = {
-        "path" => path,
-        "poiX" => 0.5,
-        "poiY" => 0.5,
-        "originalTimestampType" => "exif-original",
-        "orientation" => exif.orientation.to_i,
-        "exif" => {},
-        "sources" => [{
-          "deviceName" => "tm-mac-pro",
-          "sourceType" => "mac-folder",
-          "filePath" => path,
-          "sourceName" => "camera uploads",
-          "albumName" => "camera uploads",
-          "fileName" => File.basename(path)
+        "path"                        => path,
+        "poiX"                        => 0.5,
+        "poiY"                        => 0.5,
+        "originalTimestampType"       => "exif-original",
+        "orientation"                 => exif.orientation.to_i,
+        "exif"                        => {},
+        "sources"                     => [{
+          "deviceName"                => Socket.gethostname,
+          "sourceType"                => "mac-folder",
+          "filePath"                  => path,
+          "sourceName"                => "camera uploads",
+          "albumName"                 => "camera uploads",
+          "fileName"                  => File.basename(path)
         }],
-        "captureDevice" => {},
-        "timestamp" => date(path, exif).to_f,
-        "pid" => "43a73fc84d969321ead5084bf6b9fcbf",
-        "modified" => File.mtime(path).to_f,
-        "visibility" => 1,
-        "height" => exif.height,
-        "width" => exif.width,
-        "timestampType" => "exif-original",
-        "year" => date(path, exif).year,
-        "tid" => _pid,
-        "_statusCode" => 200,
-        "originalTimestamp" => date(path, exif).to_f,
+        "captureDevice"               => {},
+        "timestamp"                   => date(path, exif).to_f,
+        "pid"                         => _pid,
+        "modified"                    => File.mtime(path).to_f,
+        "visibility"                  => 1,
+        "height"                      => exif.height,
+        "width"                       => exif.width,
+        "timestampType"               => "exif-original",
+        "year"                        => date(path, exif).year,
+        "tid"                         => _pid,
+        "_statusCode"                 => 200,
+        "originalTimestamp"           => date(path, exif).to_f,
         "nearbyPhotosDistancesMeters" => []
       }
-      hash["exif"]["focalLength"] =
-        exif.focal_length.to_f.to_s if exif.exif[:focal_length]
-      hash["exif"]["isoSpeedRatings"] =
-          exif.iso_speed_ratings.to_f.to_s if exif.exif[:iso_speed_ratings]
-      hash["exif"]["fNumber"] =
-          exif.f_number.to_f.to_s if exif.exif[:f_number]
-      hash["exif"]["exposureTime"] =
-          exif.exposure_time.to_s if exif.exif[:exposure_time]
-      hash["exif"]["exposureBiasValue"] =
-          exif.exposure_bias_value.to_f.to_s if exif.exif[:exposure_bias_value]
+      if exif.exif[:focal_length]
+        hash["exif"]["focalLength"] = exif.focal_length.to_f.to_s
+      end
+      if exif.exif[:iso_speed_ratings]
+        hash["exif"]["isoSpeedRatings"] = exif.iso_speed_ratings.to_f.to_s
+      end
+      if exif.exif[:f_number]
+        hash["exif"]["fNumber"] = exif.f_number.to_f.to_s
+      end
+      if exif.exif[:exposure_time]
+        hash["exif"]["exposureTime"] = exif.exposure_time.to_s
+      end
+      if exif.exif[:exposure_bias_value]
+        hash["exif"]["exposureBiasValue"] = exif.exposure_bias_value.to_f.to_s 
+      end
       hash["captureDevice"]["make"] = exif.make if exif.exif[:make]
       hash["captureDevice"]["model"] = exif.model if exif.exif[:model]
 
@@ -203,8 +209,8 @@ class Photo
       # need to reverse our values (sideways orientation)
       htmp = w
       wtmp = h
-      h = htmp
-      w = wtmp
+      h    = htmp
+      w    = wtmp
     end
 
     thumb = Tempfile.new("thumb")

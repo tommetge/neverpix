@@ -10,7 +10,7 @@ class Snapshot
   attr_reader :sid
 
   def initialize(db, sid)
-    @db = db
+    @db  = db
     @sid = sid
   end
 
@@ -39,14 +39,14 @@ class Snapshot
 
     puts "Updating #{snapshot.key}"
     db.put(snapshot.key, {
-      "title" => params[:title],
-      "minDate" => photo_ts.first.to_i,
-      "maxDate" => photo_ts.last.to_i,
-      "createdDate" => snapshot.to_hash["createdDate"].to_i,
-      "modifiedTime" => Time.now.to_i,
+      "title"         => params[:title],
+      "minDate"       => photo_ts.first.to_i,
+      "maxDate"       => photo_ts.last.to_i,
+      "createdDate"   => snapshot.to_hash["createdDate"].to_i,
+      "modifiedTime"  => Time.now.to_i,
       "allowDownload" => params[:allowDownload] ? 1 : 0,
-      "photoCount" => pids.count,
-      "photos" => pids
+      "photoCount"    => pids.count,
+      "photos"        => pids
     }.to_msgpack)
 
     puts "Snapshot now has #{snapshot.to_hash["photoCount"]} photos"
@@ -63,14 +63,14 @@ class Snapshot
     photo_ts.sort!
 
     db.put(Snapshot.key(_sid), {
-      "title" => params[:title],
-      "minDate" => photo_ts.first.to_i,
-      "maxDate" => photo_ts.last.to_i,
-      "createdDate" => Time.now.to_i,
-      "modifiedTime" => Time.now.to_i,
+      "title"         => params[:title],
+      "minDate"       => photo_ts.first.to_i,
+      "maxDate"       => photo_ts.last.to_i,
+      "createdDate"   => Time.now.to_i,
+      "modifiedTime"  => Time.now.to_i,
       "allowDownload" => params[:allowDownload] ? 1 : 0,
-      "photoCount" => pids.count,
-      "photos" => pids
+      "photoCount"    => pids.count,
+      "photos"        => pids
     }.to_msgpack)
 
     Snapshot.new(db, _sid)
@@ -96,10 +96,10 @@ class Snapshot
     end
     return nil unless hash
 
-    hash["photos"] = hash["photos"].map {|pid| Photo.new(@db, pid).short_hash}
+    hash["photos"]     = hash["photos"].map {|pid| Photo.new(@db, pid).short_hash}
     hash["photoCount"] = hash["photos"].count
-    hash["sid"] = @sid
-    hash["url"] = "http://localhost:4567/public.html?id=#{@sid}"
+    hash["sid"]        = @sid
+    hash["url"]        = "http://localhost:4567/public.html?id=#{@sid}"
 
     hash
   end
@@ -111,7 +111,7 @@ class Snapshot
     if hash["photos"].count <= 5
       hash["photos"].each {|photo_hash| hash["keyPhotos"] << photo_hash}
     else
-      num_photos = [hash["photos"].count, 5].min
+      num_photos     = [hash["photos"].count, 5].min
       partition_size = (hash["photos"].count.to_f/num_photos).to_i
       num_photos.times do |n|
         break if hash["keyPhotos"].count >= 5

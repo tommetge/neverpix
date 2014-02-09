@@ -64,7 +64,7 @@ class Event
   attr_reader :eid
 
   def initialize(db, eid)
-    @db = db
+    @db  = db
     @eid = eid
   end
 
@@ -84,13 +84,13 @@ class Event
 
     db.batch do |batch|
       batch.put(Event.key(_eid), {
-        "minDate" => params[:minDate].to_i,
-        "maxDate" => params[:maxDate].to_i,
-        "timestamp" => params[:timestamp].to_i,
+        "minDate"         => params[:minDate].to_i,
+        "maxDate"         => params[:maxDate].to_i,
+        "timestamp"       => params[:timestamp].to_i,
         "photoSetVersion" => "1",
-        "timeOfDay" => params[:timeOfDay],
-        "visibility" => params[:visibility],
-        "photos" => params[:pids]
+        "timeOfDay"       => params[:timeOfDay],
+        "visibility"      => params[:visibility],
+        "photos"          => params[:pids]
       }.to_msgpack)
 
       Event.index(db).update(batch, params[:timestamp], _eid)
@@ -132,11 +132,11 @@ class Event
   end
 
   def self.highlights_from_params(db, params)
-    events = Event.from_params(db, {
-        :order => params[:order],
-        :year => params[:year],
-        :cursor => params[:cursor]})
     _photos = []
+    events = Event.from_params(db, {
+      :order  => params[:order],
+      :year   => params[:year],
+      :cursor => params[:cursor]})
     events.each do |event|
       break if params[:limit] && _photos.count >= params[:limit].to_i
       event_hash = event.to_hash
@@ -192,21 +192,14 @@ class Event
     end
     return nil unless hash
 
-    hash["photos"] = hash["photos"].map {|pid| Photo.new(@db, pid).short_hash}
-    hash["photoCount"] = hash["photos"].count
     hash["eid"] = @eid
-
-    hash["keyPhotos"] = []
-    if hash["photos"].count <= 5
-      hash["photos"].each {|photo_hash| hash["keyPhotos"] << photo_hash}
-    else
-      num_photos = [hash["photos"].count, 5].min
-      partition_size = (hash["photos"].count.to_f/num_photos).to_i
-      num_photos.times do |n|
-        break if hash["keyPhotos"].count >= 5
-        r = rand(partition_size - 1).to_i + (partition_size * (n + 1))
-        hash["keyPhotos"] << hash["photos"][r] if hash["photos"][r]
-      end
+    hash["photos"] = hash["photos"].map do |pid|
+      Photo.new(@db, pid).short_hash
+    end
+    hash["photoCount"] = hash["photos"].count
+    key_slice_size = hash["photoCount"]/[hash["photoCount"], 5].min
+    hash["keyPhotos"] = hash["photos"].each_slice(key_slice_size).map do |slice|
+      slice[rand(slice.size)]
     end
 
     hash

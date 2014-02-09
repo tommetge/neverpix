@@ -67,15 +67,15 @@ get '/v2/snapshot_info' do
   snapshot = Snapshot.new($db, params[:sid])
   {
     "_statusCode" => 200,
-    "info" => snapshot.to_hash_with_key_photos
+    "info"        => snapshot.to_hash_with_key_photos
   }.merge(snapshot.to_hash).to_json
 end
 
 get '/v2/snapshot_list' do
   {
-    "cursor" => nil,
+    "cursor"      => nil,
     "_statusCode" => 200,
-    "snapshots" => Snapshot.all_snapshots($db).map {|s| s.to_hash_with_key_photos}
+    "snapshots"   => Snapshot.all_snapshots($db).map {|s| s.to_hash_with_key_photos}
   }.to_json
 end
 
@@ -83,8 +83,8 @@ get '/v2/highlight_photos' do
   # return a random selection of photos from each event numbering about 10% of total
   photos = Event.highlights_from_params($db, params)
   {
-    "cursor" => "#{photos.last.date.to_i + 1},#{photos.last.pid},#{params[:order]}",
-    "photos" => photos.map {|photo| photo.short_hash},
+    "cursor"      => "#{photos.last.date.to_i + 1},#{photos.last.pid},#{params[:order]}",
+    "photos"      => photos.map {|photo| photo.short_hash},
     "_statusCode" => 200
     }.to_json
 end
@@ -112,9 +112,9 @@ end
 get '/v2/photo_shuffle' do
   photos = {"photos" => [], "_statusCode" => 200}
 
-  idx = PhotoTimeIndex.new($db)
+  idx   = PhotoTimeIndex.new($db)
   index = idx.index
-  pids = []
+  pids  = []
   while pids.length < params[:limit].to_i
     selections = idx.photos(index[rand(index.count)])
     pids << selections[rand(selections.count)]
@@ -156,10 +156,10 @@ get '/v2/event_info' do
 
   {
     "_statusCode" => 200,
-    "cursor" => nil,
-    "photos" => event.to_hash['photos'],
-    "eid" => params[:eid],
-    "event" => event.to_hash
+    "cursor"      => nil,
+    "photos"      => event.to_hash['photos'],
+    "eid"         => params[:eid],
+    "event"       => event.to_hash
   }.to_json
 end
 
@@ -171,9 +171,9 @@ get '/v2/event_list' do
   end
 
   {
-    "cursor" => cursor,
+    "cursor"      => cursor,
     "_statusCode" => 200,
-    "events" => events.map {|e| e.to_hash}
+    "events"      => events.map {|e| e.to_hash}
   }.to_json
 end
 
@@ -186,38 +186,38 @@ get '/v2/event_memories' do
   events = idx.find(start, finish).map {|e| e.to_hash}
 
   {
-    "_statusCode" => 200,
+    "_statusCode"        => 200,
     "relativeExpiration" => finish.to_f - params[:timestamp].to_f,
-    "events" => events,
-    "timestamp" => start.to_i
+    "events"             => events,
+    "timestamp"          => start.to_i
   }.to_json
 end
 
 get '/v2/user_statistics' do
   photo_index = PhotoTimeIndex.new($db).index
   {
-    '_statusCode' => 200,
-    :updated => Time.now.to_f,
-    :totalPhotoCount => photo_index.count, # inaccurate
-    :photoMailsSent => 0,
-    :syncedPhotoCount => photo_index.count, # inaccurate
-    :updating => false,
-    :eventCount => EventIndex.new($db).index.count,
-    :albumCount => 0, # unimplemented
+    '_statusCode'             => 200,
+    :updated                  => Time.now.to_f,
+    :totalPhotoCount          => photo_index.count, # inaccurate
+    :photoMailsSent           => 0,
+    :syncedPhotoCount         => photo_index.count, # inaccurate
+    :updating                 => false,
+    :eventCount               => EventIndex.new($db).index.count,
+    :albumCount               => 0, # unimplemented
     :accessibleDuplicateCount => 0, # unimplemented
-    :deferredPhotoCount => 0,
-    :oldestPhotoTimestamp => photo_index.first.to_i,
-    :accessiblePhotoCount => photo_index.count, # inaccurate
-    :snapshotCount => Snapshot.all_snapshots($db).count,
-    :newestPhotoTimestamp => photo_index.last.to_i,
-    :pending => {
+    :deferredPhotoCount       => 0,
+    :oldestPhotoTimestamp     => photo_index.first.to_i,
+    :accessiblePhotoCount     => photo_index.count, # inaccurate
+    :snapshotCount            => Snapshot.all_snapshots($db).count,
+    :newestPhotoTimestamp     => photo_index.last.to_i,
+    :pending                  => {
       :deduplication => false,
-      :highlights => false,
-      :downloads => 0,
-      :photos => 0,
-      :explore => false,
-      :albums => false,
-      :events => false
+      :highlights    => false,
+      :downloads     => 0,
+      :photos        => 0,
+      :explore       => false,
+      :albums        => false,
+      :events        => false
     }
   }.to_json
 end
@@ -236,9 +236,9 @@ end
 get '/v2/user_years' do
   years = EventIndex.new($db).years
   {
-    '_statusCode' => 200,
-    :eventYears => years,
-    :albumYears => years, # FIXME: implement this
+    '_statusCode'   => 200,
+    :eventYears     => years,
+    :albumYears     => years, # FIXME: implement this
     :highlightYears => years
   }.to_json
 end
@@ -248,12 +248,12 @@ get '/v2/user_sources' do
     "_statusCode" => 200,
     "connections" => {
       "instagram" => nil,
-      "twitter" => nil,
-      "picasa" => nil,
-      "facebook" => nil,
-      "flickr" => nil,
-      "emails" => [],
-      "gmail" => nil
+      "twitter"   => nil,
+      "picasa"    => nil,
+      "facebook"  => nil,
+      "flickr"    => nil,
+      "emails"    => [],
+      "gmail"     => nil
     },
     "devices" => [],
     "sources" => SourceIndex.new($db).index.map {|s| Source.new($db, s).to_hash}

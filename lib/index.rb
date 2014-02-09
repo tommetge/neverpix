@@ -21,13 +21,13 @@ class TimestampIndex
     # this should be 2log(n)
     idx = index
 
-    start = start_time.to_i
+    start  = start_time.to_i
     finish = finish_time ? finish_time.to_i : Time.now.to_i
 
-    start = start < idx.first ? idx.first : start
+    start  = start < idx.first ? idx.first : start
     finish = finish > idx.last ? idx.last : finish
 
-    limit = limit ? limit : -1
+    limit  = limit ? limit : -1
 
     return [] if start > idx.last
     return [] if finish < idx.first
