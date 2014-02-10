@@ -1,7 +1,7 @@
 /* Copyright 2011-2013 33cube, Inc. All rights reserved. */
 var HOSTNAME = window.location.host,
-  HOST_LOCALHOST = "localhost" === HOSTNAME || "localhost:8080" === HOSTNAME,
-  HOST_127_0_0_1 = "127.0.0.1" === HOSTNAME || "127.0.0.1:8080" === HOSTNAME,
+  HOST_LOCALHOST = "localhost" === HOSTNAME || "localhost:4567" === HOSTNAME,
+  HOST_127_0_0_1 = "127.0.0.1" === HOSTNAME || "127.0.0.1:4567" === HOSTNAME,
   IS_RETINA = 2 <= window.devicePixelRatio,
   REGEX_EMAIL = /[a-zA-Z0-9][\w\.\+\$\*!%#&~\-]*@((([\w-]+\.)+[a-zA-Z]{2,})|localhost)/,
   REGEX_EMAIL_GLOBAL = /[a-zA-Z0-9][\w\.\+\$\*!%#&~\-]*@((([\w-]+\.)+[a-zA-Z]{2,})|localhost)/g,
@@ -9,7 +9,7 @@ var HOSTNAME = window.location.host,
   REGEX_BACKGROUNDIMAGE = /url\(['"]?(.*?[\.png|gif|jpg|jpeg|svg|webp])['"]?\)/,
   REGEX_BACKGROUNDIMAGE_GLOBAL = /url\(['"]?(.*?[\.png|gif|jpg|jpeg|svg|webp])['"]?\)/g,
   API_SERVER_URL;
-API_SERVER_URL = HOST_LOCALHOST ? "http://localhost:4567/" : HOST_127_0_0_1 ? "http://127.0.0.1:8888/" : "http://localhost:4567/";
+API_SERVER_URL = HOST_LOCALHOST ? "http://localhost:4567/" : HOST_127_0_0_1 ? "http://127.0.0.1:8888/" : "http://neverpix.local:4567/";
 var STRIPE_KEY;
 STRIPE_KEY = HOST_LOCALHOST || HOST_127_0_0_1 ? "pk_OicanASa5XV1zdX0SqK2ae4Ye5pMj" : "pk_HFzMqaZVZrUTNnwECQKntqbQnYJwM";
 var MAPS_KEY = "AIzaSyC-Ow2_CSyiMFVK8bmAvdpnuVVmjlrCBTQ";
@@ -22,7 +22,7 @@ var WALGREENS_KEY = "cca1e194c7c78ed15b1b63fddf3fdbfa",
   WALGREENS_PUBLISHER_ID = "6499439",
   WALGREENS_GROUP_ID = "STDPR",
   THUMBNAIL_SERVER_URL;
-THUMBNAIL_SERVER_URL = HOST_LOCALHOST ? "http://localhost:4567/thumbnail/" : HOST_127_0_0_1 ? "http://127.0.0.1:9999/" : "http://localhost:4567/thumbnail/";
+THUMBNAIL_SERVER_URL = HOST_LOCALHOST ? "http://localhost:4567/thumbnail/" : HOST_127_0_0_1 ? "http://127.0.0.1:9999/" : "http://neverpix.local:4567/thumbnail/";
 var THUMBNAIL_SIZE_TINY = "225H",
   THUMBNAIL_SIZE_PHOTOPREVIEW = "225H",
   THUMBNAIL_SIZE_PHOTOPREVIEW_DROPCAP = "462H",
