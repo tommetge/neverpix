@@ -6,12 +6,19 @@ require 'leveldb'
 require 'time'
 require 'json'
 require 'digest/sha1'
+require 'sinatra/cross_origin'
 
 require_relative 'lib/photo'
 require_relative 'lib/event'
 require_relative 'lib/snapshot'
 require_relative 'lib/source'
 require_relative 'lib/user'
+
+set :allow_origin, :any
+set :allow_methods, [:get, :post, :options]
+set :allow_credentials, true
+set :max_age, "1728000"
+set :expose_headers, ['Content-Type']
 
 $db = LevelDB::DB.new('db')
 
@@ -75,15 +82,19 @@ get '/v2/snapshot_list' do
   {
     "cursor"      => nil,
     "_statusCode" => 200,
-    "snapshots"   => Snapshot.all_snapshots($db).map {|s| s.to_hash_with_key_photos}
+    "snapshots"   => Snapshot.all_snapshots($db).map do |s|
+      s.to_hash_with_key_photos
+    end
   }.to_json
 end
 
 get '/v2/highlight_photos' do
-  # return a random selection of photos from each event numbering about 10% of total
+  # return a random selection of photos from each event numbering
+  # about 10% of total
   photos = Event.highlights_from_params($db, params)
+  cursor = "#{photos.last.date.to_i + 1},#{photos.last.pid},#{params[:order]}"
   {
-    "cursor"      => "#{photos.last.date.to_i + 1},#{photos.last.pid},#{params[:order]}",
+    "cursor"      => cursor,
     "photos"      => photos.map {|photo| photo.short_hash},
     "_statusCode" => 200
     }.to_json
@@ -97,10 +108,12 @@ get '/v2/photo_interesting_set' do
   index = idx.index
   while photos["photos"].length < params[:limit].to_i
     selections = idx.photos(index[rand(index.count)])
-    photos["photo"] << Photo.new($db, selections[rand(selections.count)]).short_hash
+    photos["photo"] << Photo.new(
+        $db, selections[rand(selections.count)]).short_hash
   end
   selections = idx.photos(index[rand(index.count)])
-  photos["featuredPhoto"] = Photo.new($db, selections[rand(selections.count)]).short_hash
+  photos["featuredPhoto"] = Photo.new(
+      $db, selections[rand(selections.count)]).short_hash
 
   return photos.to_json
 end
@@ -166,8 +179,8 @@ end
 get '/v2/event_list' do
   events = Event.from_params($db, params)
   cursor = nil
-  if !params[:startTimestamp] && !params[:endTimestamp]
-    cursor = "#{events.last.timestamp.to_f + 1},#{params[:order]}" if events.count > 0
+  if !params[:startTimestamp] && !params[:endTimestamp] && events.count > 0
+    cursor = "#{events.last.timestamp.to_f + 1},#{params[:order]}"
   end
 
   {
@@ -256,7 +269,9 @@ get '/v2/user_sources' do
       "gmail"     => nil
     },
     "devices" => [],
-    "sources" => SourceIndex.new($db).index.map {|s| Source.new($db, s).to_hash}
+    "sources" => SourceIndex.new($db).index.map  do |s|
+      Source.new($db, s).to_hash
+    end
   }.to_json
 end
 
@@ -286,7 +301,8 @@ get '/thumbnail/:photo_id/:size' do
 
   if params[:size] == 'original'
     response.headers['Content-Type'] = 'image/jpeg'
-    response.headers['Content-Disposition'] = "attachment; filename=\"#{File.basename(photo.path)}\""
+    response.headers['Content-Disposition'] =
+        "attachment; filename=\"#{File.basename(photo.path)}\""
     return File.open(photo.path).read
   end
 
